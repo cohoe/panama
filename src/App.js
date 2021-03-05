@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {CounterClass} from "./Counter";
+import {CounterClass, CounterFunction} from "./Counter";
 
 function App({name = 'Foo'}) {
     return (
@@ -23,6 +23,7 @@ function App({name = 'Foo'}) {
             {/*  </a>*/}
             {/*</header>*/}
             <CounterClass count={69}>CHILD</CounterClass>
+            <CounterFunction count={69}>ChIlD?</CounterFunction>
         </div>
     );
 }

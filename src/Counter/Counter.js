@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 export class CounterClass extends React.Component {
     constructor(props) {
@@ -33,6 +34,13 @@ export class CounterClass extends React.Component {
 //     const count = props.count
 // }
 
+/**
+ *
+ * @param count
+ * @param children
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export const CounterFunction = ({ count = 0, children }) => {
     const [clicks, setClicks] = useState(count)
 
@@ -47,6 +55,10 @@ export const CounterFunction = ({ count = 0, children }) => {
             <p><b>{children}</b></p>
         </div>
     )
+}
+
+CounterFunction.propTypes = {
+    count: PropTypes.number
 }
 
 // export function CounterFunction = ({ count }) => {

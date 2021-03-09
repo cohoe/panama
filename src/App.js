@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import {CounterClass, CounterFunction} from "./Counter";
+import React from "react";
+
+const fruits = ['apple', 'banana', 'orange']
 
 function App({name = 'Foo'}) {
     return (
@@ -22,6 +25,8 @@ function App({name = 'Foo'}) {
             {/*    Learn React*/}
             {/*  </a>*/}
             {/*</header>*/}
+
+            {fruits.map(fruit => <li key={fruit}>{fruit}</li>)}
             <CounterClass count={69}>CHILD</CounterClass>
             <CounterFunction count={69}>ChIlD?</CounterFunction>
         </div>

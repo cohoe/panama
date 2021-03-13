@@ -18,6 +18,8 @@ export const Cocktail = ({cocktail_slug, spec_slug}) => {
         fetchData(cocktail_slug)
     }, [cocktail_slug])
 
+    // https://learus.github.io/react-material-ui-carousel/
+    // @TODO that
     const lookupSpec = (spec_slug) => {
         for (let i=0; i<cocktail.specs.length; i++) {
             if (cocktail.specs[i].slug === spec_slug) {

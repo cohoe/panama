@@ -4,7 +4,7 @@ import {Card, CardContent, Container, Typography} from '@material-ui/core'
 export const Component = ({component}) => {
     return (
         <Container>
-            <Typography>{component.quantity} {component.unit} {component.slug}</Typography>
+            <Typography>{component.quantity} {component.unit} {component.display_name}</Typography>
         </Container>
     )
 }

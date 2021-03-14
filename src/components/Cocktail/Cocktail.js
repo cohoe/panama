@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Card, CardContent, Container} from '@material-ui/core'
 import {Spec} from '../Spec'
-import Carousel from 'react-material-ui-carousel'
 
 // https://stackoverflow.com/questions/56670140/react-string-prop-passing-down-as-an-object
 export const Cocktail = ({cocktail_slug, spec_slug}) => {
@@ -19,13 +18,15 @@ export const Cocktail = ({cocktail_slug, spec_slug}) => {
         fetchData(cocktail_slug)
     }, [cocktail_slug])
 
-    const lookupSpecIndex = (spec_slug) => {
-        for (let i = 0; i < cocktail.specs.length; i++) {
+    // https://learus.github.io/react-material-ui-carousel/
+    // @TODO that
+    const lookupSpec = (spec_slug) => {
+        for (let i=0; i<cocktail.specs.length; i++) {
             if (cocktail.specs[i].slug === spec_slug) {
-                return i
+                return cocktail.specs[i]
             }
         }
-        return 0
+        return cocktail.specs[0]
     }
 
     return (
@@ -35,15 +36,7 @@ export const Cocktail = ({cocktail_slug, spec_slug}) => {
                 <Card key={cocktail.slug}>
                     <CardContent>
                         <p>{cocktail.display_name}</p>
-                        <Carousel autoPlay={false} cycleNavigation={false} timeout={0} index={lookupSpecIndex(spec_slug)}
-                                  navButtonsAlwaysVisible={true} fullHeightHover={true} navButtonsWrapperProps={{ style: { height: 'unset'}}}>
-                            {cocktail.specs.map((spec, i) => (
-                                <Container>
-                                    <Spec cocktail_slug={cocktail.slug} spec={spec}/>
-                                </Container>
-                            ))}
-                        </Carousel>
-                        {/*<Spec cocktail_slug={cocktail.slug} spec={lookupSpec(spec_slug)}/>*/}
+                        <Spec cocktail_slug={cocktail.slug} spec={lookupSpec(spec_slug)}/>
                     </CardContent>
                 </Card>
             )}

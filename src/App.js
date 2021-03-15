@@ -31,7 +31,7 @@ function App({name = 'Foo'}) {
             {/*<CounterClass count={69}>CHILD</CounterClass>*/}
             {/*<CounterFunction count={69}>ChIlD?</CounterFunction>*/}
             <Cocktail cocktail_slug={'old-fashioned'}/>
-            <Cocktail cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>
+            {/*<Cocktail cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>*/}
         </div>
     );
 }

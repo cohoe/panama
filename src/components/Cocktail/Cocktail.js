@@ -22,7 +22,7 @@ export const CocktailCarousel = ({cocktail_slug, spec_slug}) => {
     }
 
     const lookupSpecIndex = (spec_slug) => {
-        console.log("Looking up something")
+        // console.log("Looking up something")
         for (let i = 0; i < cocktail.specs.length; i++) {
             if (cocktail.specs[i].slug === spec_slug) {
                 return i
@@ -75,11 +75,13 @@ export const CocktailCustom = ({cocktail_slug, spec_slug}) => {
         const response = await fetch(`http://localhost:8080/api/v1/cocktails/${cocktail_slug}`)
         const json = await response.json()
         setCocktail(json)
+        // lookupSpecIndex(spec_slug)
         setLoading(false)
     }
 
     const lookupSpecIndex = (spec_slug) => {
         console.log("Looking up something")
+        // Convert this to a map!
         for (let i = 0; i < cocktail.specs.length; i++) {
             if (cocktail.specs[i].slug === spec_slug) {
                 return i
@@ -95,6 +97,7 @@ export const CocktailCustom = ({cocktail_slug, spec_slug}) => {
     // https://stackoverflow.com/questions/53898810/executing-async-code-on-update-of-state-with-react-hooks
     // Is this kosher?
     useEffect(() => {
+        console.log("WHAHAHAHAHHAA")
         if (cocktail) {
             setSpecIndex(lookupSpecIndex(spec_slug))
         }
@@ -122,6 +125,8 @@ export const CocktailCustom = ({cocktail_slug, spec_slug}) => {
     const getPreviousDisabled = () => {
         return specIndex === 0
     }
+
+    // Could do a different return() here for loading
 
     return (
         <Container>

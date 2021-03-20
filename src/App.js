@@ -3,6 +3,9 @@ import './App.css';
 // import {CounterClass, CounterFunction} from "./Counter";
 import {CocktailCarousel, CocktailCustom} from "./components/Cocktail"
 import React from "react";
+import {Header, Sidebar} from "./layout/Page"
+// import Header from "./layout/Header/Header"
+import {Container} from "@material-ui/core"
 
 // const fruits = ['apple', 'banana', 'orange']
 
@@ -30,11 +33,13 @@ function App({name = 'Foo'}) {
             {/*{fruits.map(fruit => <li key={fruit}>{fruit}</li>)}*/}
             {/*<CounterClass count={69}>CHILD</CounterClass>*/}
             {/*<CounterFunction count={69}>ChIlD?</CounterFunction>*/}
-            <CocktailCarousel cocktail_slug={'old-fashioned'}/>
-            <CocktailCustom cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>
-            {/*<Cocktail cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>*/}
+
+            {/*<CocktailCarousel cocktail_slug={'old-fashioned'}/>*/}
+            {/*<CocktailCustom cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>*/}
+            {/*<Header />*/}
+            <Sidebar />
         </div>
-    );
+    )
 }
 
 export default App;

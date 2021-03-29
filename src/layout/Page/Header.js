@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Header = () => {
-    // @TODO what does this do?
     const classes = useStyles();
 
     return (

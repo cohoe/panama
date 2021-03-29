@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
 // import {CounterClass, CounterFunction} from "./Counter";
-import {CocktailCarousel, CocktailCustom} from "./components/Cocktail"
+// import {CocktailCarousel, CocktailCustom} from "./components/Cocktail"
 import React from "react";
-import {Header, Sidebar} from "./layout/Page"
-// import Header from "./layout/Header/Header"
-import {Container} from "@material-ui/core"
+// import {Header, Sidebar} from "./layout/Page"
+import {Header,Content} from "./layout/Page"
+// import {Container} from "@material-ui/core"
 
 // const fruits = ['apple', 'banana', 'orange']
 
@@ -17,20 +17,20 @@ import {Container} from "@material-ui/core"
 
 
 
-var JamaicaApi = require('jamaica_api');
-
-var api = new JamaicaApi.V1authApi()
-// api.basePath = 'http://localhost:8080/api'
-api.getAuthInfoEndpoint().then(function() {
-    console.log('API called successfully.');
-}, function(error) {
-    console.error(error);
-});
-
-const cocktailsApi = new JamaicaApi.V1cocktailsApi()
-cocktailsApi.getCocktailsEndpoint().then(function(data) {
-    console.log(data)
-})
+// var JamaicaApi = require('jamaica_api');
+//
+// var api = new JamaicaApi.V1authApi()
+// // api.basePath = 'http://localhost:8080/api'
+// api.getAuthInfoEndpoint().then(function() {
+//     console.log('API called successfully.');
+// }, function(error) {
+//     console.error(error);
+// });
+//
+// const cocktailsApi = new JamaicaApi.V1cocktailsApi()
+// cocktailsApi.getCocktailsEndpoint().then(function(data) {
+//     console.log(data)
+// })
 
 
 // console.log(api.V1listsApi())
@@ -49,7 +49,12 @@ cocktailsApi.getCocktailsEndpoint().then(function(data) {
 
 function App({name = 'Foo'}) {
     return (
-        <div className="App">
+        <>
+            <Header/>
+            <Content/>
+        </>
+    )
+            // <div className="App">
             {/*<header className="App-header">*/}
             {/*  <img src={logo} className="App-logo" alt="logo" />*/}
             {/*  <p>*/}
@@ -75,9 +80,12 @@ function App({name = 'Foo'}) {
             {/*<CocktailCarousel cocktail_slug={'old-fashioned'}/>*/}
             {/*<CocktailCustom cocktail_slug={'martinez'} spec_slug={'rail-stop'}/>*/}
             {/*<Header />*/}
-            <Sidebar />
-        </div>
-    )
+            // <Sidebar />
+            // <Container>
+            //     ashdjjhoiahois
+            // </Container>
+        // </div>
+    // )
 }
 
 export default App;

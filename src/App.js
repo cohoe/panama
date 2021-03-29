@@ -45,7 +45,8 @@ import {Header,Content} from "./layout/Page"
 
 
 
-
+import {CocktailList} from "./components/Cocktail/CocktailList";
+import {Container, Paper} from "@material-ui/core";
 
 function App({name = 'Foo'}) {
     return (
@@ -54,6 +55,9 @@ function App({name = 'Foo'}) {
             <Content/>
         </>
     )
+    //     return (
+    //         <CocktailList />
+    //     )
             // <div className="App">
             {/*<header className="App-header">*/}
             {/*  <img src={logo} className="App-logo" alt="logo" />*/}

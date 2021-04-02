@@ -50,10 +50,10 @@ import {Container, Paper} from "@material-ui/core";
 
 function App({name = 'Foo'}) {
     return (
-        <>
+        <div className={'app'}>
             <Header/>
             <Content/>
-        </>
+        </div>
     )
     //     return (
     //         <CocktailList />

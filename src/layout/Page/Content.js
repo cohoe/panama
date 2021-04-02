@@ -6,21 +6,24 @@ import {Icon} from "@material-ui/core";
 import {CocktailList} from "../../components/Cocktail/CocktailList";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    content: {
         // flexGrow: 1,
-        height: '100%',
+        flex: 1,
         overflow: 'hidden',
         display: 'flex',
     },
     paperThingy: {
         width: '340px',
-        overflowY: 'scroll'
+        overflowY: 'scroll',
+        // flex: 1,
     },
-    sideBar: {
-        width: '50px',
-        backgroundColor: 'green',
-        height: '100%',
-    }
+    // sideBar: {
+    //     width: '50px',
+    //     backgroundColor: 'green',
+    //     // flex: 1,
+    //
+    //     // height: '100%',
+    // }
 }));
 
 
@@ -28,8 +31,8 @@ export const Content = () => {
     const classes = useStyles();
 
     return (
-        <main className={classes.root}>
-            <div className={classes.sideBar}>
+        <main className={classes.content}>
+            <div className={'sidebar'}>
                 A
                 B
                 C

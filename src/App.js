@@ -47,13 +47,15 @@ import {Header,Content} from "./layout/Page"
 
 import {CocktailList} from "./components/Cocktail/CocktailList";
 import {Container, Paper} from "@material-ui/core";
+import MiniDrawer from "./layout/Page/NewAppLayoutThing"
 
 function App({name = 'Foo'}) {
     return (
-        <div className={'app'}>
-            <Header/>
-            <Content/>
-        </div>
+        <MiniDrawer />
+        // <div className={'app'}>
+        //     <Header/>
+        //     <Content/>
+        // </div>
     )
     //     return (
     //         <CocktailList />

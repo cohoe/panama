@@ -5,6 +5,7 @@ import {TabPanel} from '@material-ui/lab'
 import {Spec} from '../Spec'
 import {Text} from "../Text";
 import Carousel from 'react-material-ui-carousel'
+import {useParams} from 'react-router-dom'
 
 
 // https://stackoverflow.com/questions/56670140/react-string-prop-passing-down-as-an-object
@@ -65,7 +66,8 @@ export const CocktailCarousel = ({cocktail_slug, spec_slug}) => {
     )
 }
 
-export const CocktailCustom = ({cocktail_slug, spec_slug}) => {
+export const CocktailCustom = () => {
+    let {cocktail_slug, spec_slug} = useParams();
 
     const [cocktail, setCocktail] = useState()
     const [loading, setLoading] = useState(true)

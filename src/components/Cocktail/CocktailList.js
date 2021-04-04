@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {CocktailListCard} from "./CocktailListCard";
 import {makeStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
 // import {Card, CardContent, Container, ListItem, Tabs, Tab, Typography, Button} from '@material-ui/core'
 // import {TabPanel} from '@material-ui/lab'
 // // import TabPanel from '@material-ui/core/TabsP'
@@ -34,9 +35,11 @@ export const CocktailList = () => {
 
     const getSpecDescription = (spec) => {
         let description = "";
-        {spec.components.map((component) => (
-            description += component.slug + " "
-        ))}
+        {
+            spec.components.map((component) => (
+                description += component.slug + " "
+            ))
+        }
         return description
     }
 
@@ -46,11 +49,15 @@ export const CocktailList = () => {
             {!loading && (
                 <>
                     {cocktails.map((cocktail, i) => (
-                        <>
-                        {cocktail.specs.map((spec) => (
-                            <CocktailListCard cocktail_display_name={cocktail.display_name} spec_display_name={spec.display_name} description={getSpecDescription(spec)} />
-                        ))}
-                        </>
+                        <div key={i}>
+                            {cocktail.specs.map((spec) => (
+                                <Link to={`/cocktails/${cocktail.slug}/${spec.slug}`} key={`${cocktail.slug}_${spec.slug}`}>
+                                    <CocktailListCard cocktail_display_name={cocktail.display_name} spec_display_name={spec.display_name}
+                                                      description={getSpecDescription(spec)}>
+                                    </CocktailListCard>
+                                </Link>
+                            ))}
+                        </div>
                     ))}
                 </>
             )}

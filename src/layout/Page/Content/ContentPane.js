@@ -7,7 +7,12 @@ import {Switch, Route, useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
-        flex: 2
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },
+        [theme.breakpoints.up('sm')]: {
+            flex: 1
+        },
     }
 }))
 

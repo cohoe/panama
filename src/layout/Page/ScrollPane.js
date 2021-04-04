@@ -5,7 +5,15 @@ import {CocktailList} from "../../components/Cocktail/CocktailList";
 
 const useStyles = makeStyles((theme) => ({
     scrollBar: {
-        width: '340px',
+        [theme.breakpoints.up('md')]: {
+            width: '340px',
+        },
+        [theme.breakpoints.only('sm')]: {
+            flex: 1,
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+        },
         overflowY: 'scroll',
     },
 }))

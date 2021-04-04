@@ -1,5 +1,4 @@
 import React from 'react';
-import {SideBar} from "./Sidebar";
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';

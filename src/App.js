@@ -43,11 +43,11 @@ import {Header,ContentPane} from "./layout/Page"
 // END API JUNK
 
 
-import MiniDrawer from "./layout/Page/NewAppLayoutThing"
+import MainLayout from "./layout/Page/Main"
 
 function App({name = 'Foo'}) {
     return (
-        <MiniDrawer />
+        <MainLayout />
     )
 }
 

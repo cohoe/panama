@@ -1,4 +1,3 @@
-
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -14,7 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 
-import {ContentParent} from "./ContentParent";
+import {ContentParent} from "./Content/ContentParent";
 import {SidebarButtons} from "./SidebarButtons";
 
 const drawerWidth = 240;
@@ -79,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function MiniDrawer() {
+export default function MainLayout() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);

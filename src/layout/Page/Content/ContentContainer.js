@@ -1,5 +1,5 @@
 import React from "react";
-import {ScrollPane} from "./ScrollPane";
+import {ScrollPane} from "../ScrollPane";
 import {ContentPane} from "./ContentPane";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 

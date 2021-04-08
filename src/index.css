@@ -41,3 +41,7 @@ code {
         display: none;
     }
 }
+
+.test {
+    width: 100%;
+}

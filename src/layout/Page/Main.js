@@ -47,8 +47,12 @@ const useStyles = makeStyles((theme) => ({
         width: drawerWidth,
         flexShrink: 0,
         whiteSpace: 'nowrap',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
     drawerOpen: {
+        display: 'block',
         width: drawerWidth,
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,

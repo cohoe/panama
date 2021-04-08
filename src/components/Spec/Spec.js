@@ -7,7 +7,7 @@ export const Spec = ({cocktail_slug, spec}) => {
     const spec_id = `${cocktail_slug}::${spec.slug}`
 
     return (
-        <Container>
+        <>
             <Card key={spec_id}>
                 <CardContent>
                     <p>{spec.display_name}</p>
@@ -34,6 +34,6 @@ export const Spec = ({cocktail_slug, spec}) => {
                     </List>
                 </CardContent>
             </Card>
-        </Container>
+        </>
     )
 }

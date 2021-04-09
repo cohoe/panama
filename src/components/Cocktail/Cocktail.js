@@ -8,10 +8,19 @@ import Carousel from 'react-material-ui-carousel'
 import {useParams} from 'react-router-dom'
 import {Paper} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {CocktailTitleCard} from "./CocktailTitleCard";
 
+const useStyles = makeStyles((theme) => ({
+    cocktailPaper: {
+        backgroundColor: 'pink',
+    }
+}))
 
 export const CocktailCustom = () => {
     let {cocktail_slug, spec_slug} = useParams();
+    const theme = useTheme();
+    const classes = useStyles(theme);
 
     const [cocktail, setCocktail] = useState()
     const [loading, setLoading] = useState(true)
@@ -76,17 +85,13 @@ export const CocktailCustom = () => {
 
     // @TODO fix grid shit
     return (
-        <Paper>
+        <Paper className={classes.cocktailPaper}>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <>
-                    <Grid container spacing={1} className={"test"}>
+                    <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>{cocktail.display_name}</Typography>
-                                </CardContent>
-                            </Card>
+                            <CocktailTitleCard display_name={cocktail.display_name} origin={cocktail.origin}/>
                         </Grid>
                         <Grid item sm={12} xl={6}>
                             <Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>

@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         overflowY: 'scroll',
+        padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
     }
 }))
 

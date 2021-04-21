@@ -85,7 +85,7 @@ export const CocktailCustom = () => {
     // Could do a different return() here for loading
 
     // @TODO fix grid shit. Yeah... what grid shit?
-    // @TODO sizing based on ultrawide desktop half and laptop.
+    // @TODO sizing based on ultrawide desktop half and laptop. md works for desktop but breaks ipad. maybe lg instead?
     // @TODO styling on the code of the NotesCard there
     return (
         <Paper className={classes.cocktailPaper}>
@@ -96,10 +96,10 @@ export const CocktailCustom = () => {
                         <Grid item xs={12}>
                             <CocktailTitleCard display_name={cocktail.display_name} origin={cocktail.origin}/>
                         </Grid>
-                        <Grid item sm={12} md={6}>
+                        <Grid item sm={12} lg={6}>
                             <Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
                         </Grid>
-                        <Grid item sm={12} md={6}>
+                        <Grid item sm={12} lg={6}>
                             {/*<Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>*/}
                             <NotesCard cocktail_name={cocktail.display_name}
                                        cocktail_notes={cocktail.notes}

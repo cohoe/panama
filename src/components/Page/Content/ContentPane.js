@@ -2,7 +2,7 @@ import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {CocktailCustom} from "../../../components/Cocktail";
+import {CocktailCustom} from "../../Cocktail";
 import {Switch, Route, useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({

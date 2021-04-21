@@ -3,7 +3,7 @@ import {Card, CardContent, List, ListItem, Typography, Container} from '@materia
 import {Component} from '../Component'
 import {Text} from "../Text";
 import {makeStyles} from "@material-ui/core/styles";
-import HelpOutlineOutlinedIcon from '@material-ui/icons/HelpOutlineOutlined';
+import {SectionTitle} from "../Section/SectionTitle";
 
 const useStyles = makeStyles({
     title: {
@@ -49,10 +49,7 @@ export const Spec = ({cocktail_slug, spec}) => {
     return (
         <Card key={spec_id}>
             <CardContent className={classes.cardContentParent}>
-                <div className={classes.cardTitleContainer}>
-                    <Typography className={classes.cardLabel}>Spec</Typography>
-                    <HelpOutlineOutlinedIcon className={classes.helpIcon}/>
-                </div>
+                <SectionTitle title={"Spec"} />
                 <div className={classes.mainCardContent}>
                     <Typography variant="h2" className={classes.title} gutterBottom>
                         {spec.display_name}

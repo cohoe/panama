@@ -10,6 +10,7 @@ import {Paper} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailTitleCard} from "./CocktailTitleCard";
+import {NotesCard} from "../Text/NotesCard";
 
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {
@@ -83,7 +84,9 @@ export const CocktailCustom = () => {
 
     // Could do a different return() here for loading
 
-    // @TODO fix grid shit
+    // @TODO fix grid shit. Yeah... what grid shit?
+    // @TODO sizing based on ultrawide desktop half and laptop.
+    // @TODO styling on the code of the NotesCard there
     return (
         <Paper className={classes.cocktailPaper}>
             {loading && <p>Loading...</p>}
@@ -93,11 +96,16 @@ export const CocktailCustom = () => {
                         <Grid item xs={12}>
                             <CocktailTitleCard display_name={cocktail.display_name} origin={cocktail.origin}/>
                         </Grid>
-                        <Grid item sm={12} xl={6}>
+                        <Grid item sm={12} md={6}>
                             <Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
                         </Grid>
-                        <Grid item sm={12} xl={6}>
-                            <Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
+                        <Grid item sm={12} md={6}>
+                            {/*<Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>*/}
+                            <NotesCard cocktail_name={cocktail.display_name}
+                                       cocktail_notes={cocktail.notes}
+                                       spec_name={cocktail.specs[specIndex].display_name}
+                                       spec_notes={cocktail.specs[specIndex].notes}
+                            />
                         </Grid>
                     </Grid>
                 </>

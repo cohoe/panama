@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     }
 });
 
-export const Spec = ({cocktail_slug, spec}) => {
+export const CocktailSpecCard = ({cocktail_slug, spec}) => {
     const spec_id = `${cocktail_slug}::${spec.slug}`
     const classes = useStyles();
 

@@ -1,16 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {Card, CardContent, Container, ListItem, Tabs, Tab, Typography, Button} from '@material-ui/core'
-import {TabPanel} from '@material-ui/lab'
-// import TabPanel from '@material-ui/core/TabsP'
-import {Spec} from '../Spec'
-import {Text} from "../Text";
-import Carousel from 'react-material-ui-carousel'
+import {CocktailSpecCard} from './CocktailSpecCard'
 import {useParams} from 'react-router-dom'
 import {Paper} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailTitleCard} from "./CocktailTitleCard";
-import {NotesCard} from "../Text/NotesCard";
+import {CocktailNotesCard} from "./CocktailNotesCard";
 
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {
@@ -97,14 +92,13 @@ export const CocktailCustom = () => {
                             <CocktailTitleCard display_name={cocktail.display_name} origin={cocktail.origin}/>
                         </Grid>
                         <Grid item sm={12} lg={6}>
-                            <Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
+                            <CocktailSpecCard cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
                         </Grid>
                         <Grid item sm={12} lg={6}>
-                            {/*<Spec cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>*/}
-                            <NotesCard cocktail_name={cocktail.display_name}
-                                       cocktail_notes={cocktail.notes}
-                                       spec_name={cocktail.specs[specIndex].display_name}
-                                       spec_notes={cocktail.specs[specIndex].notes}
+                            <CocktailNotesCard cocktail_name={cocktail.display_name}
+                                               cocktail_notes={cocktail.notes}
+                                               spec_name={cocktail.specs[specIndex].display_name}
+                                               spec_notes={cocktail.specs[specIndex].notes}
                             />
                         </Grid>
                     </Grid>

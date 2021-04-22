@@ -35,11 +35,9 @@ export const CocktailList = () => {
 
     const getSpecDescription = (spec) => {
         let description = "";
-        {
-            spec.components.map((component) => (
-                description += component.slug + " "
-            ))
-        }
+        spec.components.map((component) => (
+            description += component.slug + " "
+        ))
         return description
     }
 

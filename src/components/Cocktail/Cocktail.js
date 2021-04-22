@@ -30,7 +30,7 @@ export const CocktailCustom = () => {
         setLoading(false)
     }
 
-    const lookupSpecIndex = (spec_slug) => {
+    const lookupSpecIndex = (cocktail, spec_slug) => {
         console.log("Looking up something")
         // Convert this to a map!
         for (let i = 0; i < cocktail.specs.length; i++) {
@@ -46,37 +46,35 @@ export const CocktailCustom = () => {
     }, [cocktail_slug])
 
     // https://stackoverflow.com/questions/53898810/executing-async-code-on-update-of-state-with-react-hooks
-    // Is this kosher?
     useEffect(() => {
-        console.log("WHAHAHAHAHHAA")
         if (cocktail) {
-            setSpecIndex(lookupSpecIndex(spec_slug))
+            setSpecIndex(lookupSpecIndex(cocktail, spec_slug))
         }
-    }, [cocktail])
+    }, [cocktail, spec_slug])
 
-    const getPreviousArrayIndex = (index) => {
-        if (index === 0) {
-            return 0
-        } else {
-            return index - 1
-        }
-    }
-
-    const getNextArrayIndex = (index) => {
-        if (index === cocktail.specs.length - 1) {
-            return index
-        }
-        return index + 1
-    }
-
-    const getNextDisabled = () => {
-        return specIndex === cocktail.specs.length - 1
-    }
-
-    const getPreviousDisabled = () => {
-        return specIndex === 0
-    }
-
+    // const getPreviousArrayIndex = (index) => {
+    //     if (index === 0) {
+    //         return 0
+    //     } else {
+    //         return index - 1
+    //     }
+    // }
+    //
+    // const getNextArrayIndex = (index) => {
+    //     if (index === cocktail.specs.length - 1) {
+    //         return index
+    //     }
+    //     return index + 1
+    // }
+    //
+    // const getNextDisabled = () => {
+    //     return specIndex === cocktail.specs.length - 1
+    // }
+    //
+    // const getPreviousDisabled = () => {
+    //     return specIndex === 0
+    // }
+    //
     // Could do a different return() here for loading
 
     // @TODO fix grid shit. Yeah... what grid shit?

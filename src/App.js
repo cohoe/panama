@@ -4,7 +4,7 @@ import './App.css';
 // import {CocktailCarousel, CocktailCustom} from "./components/Cocktail"
 import React from "react";
 // import {Header, Sidebar} from "./layout/Page"
-import {Header,ContentPane} from "./components/Page"
+// import {Header,ContentPane} from "./components/Page"
 // import {Container} from "@material-ui/core"
 
 // const fruits = ['apple', 'banana', 'orange']

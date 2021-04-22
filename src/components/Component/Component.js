@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {Card, CardContent, Container, Typography} from '@material-ui/core'
+import React from 'react'
+import {Container, Typography} from '@material-ui/core'
 
 export const Component = ({component}) => {
     return (

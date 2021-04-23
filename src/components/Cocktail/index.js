@@ -1,1 +1,1 @@
-export * from './Cocktail'
+export * from './CocktailPane'

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {CocktailCustom} from "../../Cocktail";
+import {CocktailPane} from "../../Cocktail";
 import {Switch, Route, useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,7 @@ export const ContentPane = () => {
         <div className={classes.contentPane}>
             <Switch>
                 <Route path="/cocktails/:cocktail_slug/:spec_slug">
-                    <CocktailCustom/>
+                    <CocktailPane/>
                 </Route>
                 <Route path="/settings">
                     <p>Settings!</p>

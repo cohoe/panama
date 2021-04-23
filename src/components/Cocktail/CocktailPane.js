@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const CocktailCustom = () => {
+export const CocktailPane = () => {
     let {cocktail_slug, spec_slug} = useParams();
     const theme = useTheme();
     const classes = useStyles(theme);

@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailList} from "../Cocktail/CocktailList";
+import {Route, Switch} from "react-router-dom";
+import {CocktailPane} from "../Cocktail";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
-    scrollBar: {
+    scrollPane: {
         [theme.breakpoints.up('md')]: {
             width: '340px',
         },
@@ -16,6 +19,14 @@ const useStyles = makeStyles((theme) => ({
         },
         overflowY: 'scroll',
     },
+    scrollPaneActive: {
+        // display: 'flex'
+    },
+    scrollPaneInactive: {
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },
+    }
 }))
 
 export const ScrollPane = () => {
@@ -23,8 +34,22 @@ export const ScrollPane = () => {
     const classes = useStyles(theme);
 
     return (
-        <div className={classes.scrollBar}>
-            <CocktailList />
-        </div>
+        <Switch>
+            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
+                <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
+                    <CocktailList/>
+                </div>
+            </Route>
+            <Route exact path="/cocktails/">
+                <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
+                    <CocktailList/>
+                </div>
+            </Route>
+            <Route path="/">
+                <div className={classes.scrollPane}>
+                    <Typography>Hork Tork</Typography>
+                </div>
+            </Route>
+        </Switch>
     )
 }

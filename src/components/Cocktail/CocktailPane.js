@@ -89,10 +89,10 @@ export const CocktailPane = () => {
                         <Grid item xs={12}>
                             <CocktailTitleCard display_name={cocktail.display_name} origin={cocktail.origin}/>
                         </Grid>
-                        <Grid item sm={12} lg={6}>
+                        <Grid item lg={6} xs={12}>
                             <CocktailSpecCard cocktail_slug={cocktail.slug} spec={cocktail.specs[specIndex]}/>
                         </Grid>
-                        <Grid item sm={12} lg={6}>
+                        <Grid item lg={6} xs={12}>
                             <CocktailNotesCard cocktail_name={cocktail.display_name}
                                                cocktail_notes={cocktail.notes}
                                                spec_name={cocktail.specs[specIndex].display_name}

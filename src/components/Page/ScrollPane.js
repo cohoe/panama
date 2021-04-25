@@ -3,7 +3,6 @@ import React from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailList} from "../Cocktail/CocktailList";
 import {Route, Switch} from "react-router-dom";
-import {CocktailPane} from "../Cocktail";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({

@@ -4,13 +4,9 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {CocktailPane} from "../../Cocktail";
 import {Switch, Route, useParams} from "react-router-dom";
-import {CocktailList} from "../../Cocktail/CocktailList";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
-        // [theme.breakpoints.down('xs')]: {
-        //     display: 'none'
-        // },
         [theme.breakpoints.up('sm')]: {
             flex: 1
         },

@@ -2,11 +2,17 @@ import React from "react";
 import {ScrollPane} from "../ScrollPane";
 import {ContentPane} from "./ContentPane";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
+import {ActionBar} from "../ActionBar";
 
 const useStyles = makeStyles((theme) => ({
     contentContainer: {
         display: 'flex',
         overflow: 'hidden',
+        flex: 1
+    },
+    paneContainer: {
+        display: 'flex',
+        flexDirection: 'column',
         flex: 1
     }
 }))
@@ -17,8 +23,14 @@ export const ContentContainer = () => {
 
     return (
         <div className={classes.contentContainer}>
+            {/*<div className={classes.paneContainer}>*/}
+            {/*    */}
+            {/*</div>*/}
             <ScrollPane />
-            <ContentPane />
+            <div className={classes.paneContainer}>
+                <ActionBar/>
+                <ContentPane />
+            </div>
         </div>
     )
 }

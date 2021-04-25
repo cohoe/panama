@@ -7,10 +7,12 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     actionBar: {
-        backgroundColor: 'hotpink',
-        minHeight: '2rem',
+        backgroundColor: 'white',
+        height: '3rem',
+        minHeight: '3rem',
         display: 'flex',
         // marginBottom: '16px',
+        borderBottom: '1px solid black',
     },
     actionBarIcon: {
         // marginTop: 'auto',
@@ -21,14 +23,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ActionBar = () => {
+export const ActionBar = ({children}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
     return (
         <div className={classes.actionBar}>
-            <Button className={classes.actionBarButton}><ArrowBackIcon className={classes.actionBarIcon}/></Button>
-            <Button className={classes.actionBarButton}><ArrowForwardIcon className={classes.actionBarIcon}/></Button>
+            {children}
         </div>
     )
 }

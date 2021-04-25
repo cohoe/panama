@@ -118,7 +118,7 @@ export default function MainLayout() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Mini variant drawer
+                        Panama
                     </Typography>
                 </Toolbar>
             </AppBar>

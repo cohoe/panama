@@ -2,7 +2,11 @@ import React from "react";
 import {ScrollPane} from "../ScrollPane";
 import {ContentPane} from "./ContentPane";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
-import {ActionBar} from "../ActionBar";
+import {ActionBar} from "../ActionBar/ActionBar";
+import Button from "@material-ui/core/Button";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import {ActionBarButton} from "../ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
     contentContainer: {
@@ -23,12 +27,12 @@ export const ContentContainer = () => {
 
     return (
         <div className={classes.contentContainer}>
-            {/*<div className={classes.paneContainer}>*/}
-            {/*    */}
-            {/*</div>*/}
             <ScrollPane />
             <div className={classes.paneContainer}>
-                <ActionBar/>
+                <ActionBar>
+                    <ActionBarButton text={"previous"}/>
+                    <ActionBarButton text={"next"}/>
+                </ActionBar>
                 <ContentPane />
             </div>
         </div>

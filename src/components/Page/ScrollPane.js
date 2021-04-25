@@ -4,6 +4,8 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailList} from "../Cocktail/CocktailList";
 import {Route, Switch} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import {ActionBar} from "./ActionBar/ActionBar";
+import {ActionBarButton} from "./ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -16,7 +18,10 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
-        overflowY: 'scroll',
+        // overflowY: 'scroll',
+        display: 'flex',
+        flexDirection: 'column',
+        borderRight: '1px solid #000'
     },
     scrollPaneActive: {
         // display: 'flex'
@@ -25,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             display: 'none'
         },
+    },
+    scrollPaneInner: {
+        overflowY: 'scroll',
     }
 }))
 
@@ -36,7 +44,12 @@ export const ScrollPane = () => {
         <Switch>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
                 <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
-                    <CocktailList/>
+                    <ActionBar>
+                        <ActionBarButton text={"history"}/>
+                    </ActionBar>
+                    <div className={classes.scrollPaneInner}>
+                        <CocktailList/>
+                    </div>
                 </div>
             </Route>
             <Route exact path="/cocktails/">

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
             width: '340px',
         },
         [theme.breakpoints.only('sm')]: {
-            flex: 1, // @TODO width 50%?
+            flex: 1,
         },
         [theme.breakpoints.down('xs')]: {
             width: '100%',

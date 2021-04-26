@@ -3,8 +3,9 @@ import {ScrollPane} from "../ScrollPane";
 import {ContentPane} from "./ContentPane";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {ActionBar} from "../ActionBar/ActionBar";
-// import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import Button from "@material-ui/core/Button";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import {ActionBarButton} from "../ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,6 @@ export const ContentContainer = () => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
-    // @TODO refactor this to get the stuff into ContentPane
     return (
         <div className={classes.contentContainer}>
             <ScrollPane />

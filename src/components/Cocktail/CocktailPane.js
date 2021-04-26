@@ -52,34 +52,6 @@ export const CocktailPane = () => {
         }
     }, [cocktail, spec_slug])
 
-    // const getPreviousArrayIndex = (index) => {
-    //     if (index === 0) {
-    //         return 0
-    //     } else {
-    //         return index - 1
-    //     }
-    // }
-    //
-    // const getNextArrayIndex = (index) => {
-    //     if (index === cocktail.specs.length - 1) {
-    //         return index
-    //     }
-    //     return index + 1
-    // }
-    //
-    // const getNextDisabled = () => {
-    //     return specIndex === cocktail.specs.length - 1
-    // }
-    //
-    // const getPreviousDisabled = () => {
-    //     return specIndex === 0
-    // }
-    //
-    // Could do a different return() here for loading
-
-    // @TODO fix grid shit. Yeah... what grid shit?
-    // @TODO sizing based on ultrawide desktop half and laptop. md works for desktop but breaks ipad. maybe lg instead?
-    // @TODO styling on the code of the NotesCard there
     return (
         <Paper className={classes.cocktailPaper}>
             {loading && <p>Loading...</p>}

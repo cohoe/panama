@@ -1,11 +1,6 @@
 import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {CocktailList} from "../Cocktail/CocktailList";
-import {Route, Switch} from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
-import {ActionBar} from "./ActionBar/ActionBar";
-import {ActionBarButton} from "./ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -18,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
-        // overflowY: 'scroll',
+        overflowY: 'scroll',
         display: 'flex',
         flexDirection: 'column',
         borderRight: '1px solid #000'
@@ -36,33 +31,37 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ScrollPane = () => {
+export const ScrollPane = ({children}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
     // @TODO fix scrolling on mobile
     return (
-        <Switch>
-            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
-                    <ActionBar>
-                        <ActionBarButton text={"history"}/>
-                    </ActionBar>
-                    <div className={classes.scrollPaneInner}>
-                        <CocktailList/>
-                    </div>
-                </div>
-            </Route>
-            <Route exact path="/cocktails/">
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
-                    <CocktailList/>
-                </div>
-            </Route>
-            <Route path="/">
-                <div className={classes.scrollPane}>
-                    <Typography>Hork Tork</Typography>
-                </div>
-            </Route>
-        </Switch>
+        <div className={classes.scrollPane + ' ' + classes.scrollPane}>
+            {children}
+            {/*<ActionBar>*/}
+            {/*    <ActionBarButton text={"history"}/>*/}
+            {/*</ActionBar>*/}
+            {/*<div className={classes.scrollPaneInner}>*/}
+            {/*    <CocktailList/>*/}
+            {/*</div>*/}
+        </div>
+        // <Switch>
+        //     <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
+        //         <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
+        //             <ActionBar>
+        //                 <ActionBarButton text={"history"}/>
+        //             </ActionBar>
+        //             <div className={classes.scrollPaneInner}>
+        //                 <CocktailList/>
+        //             </div>
+        //         </div>
+        //     </Route>
+        //     <Route path="/">
+        //         <div className={classes.scrollPane}>
+        //             <Typography>Hork Tork</Typography>
+        //         </div>
+        //     </Route>
+        // </Switch>
     )
 }

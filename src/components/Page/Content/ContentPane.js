@@ -1,9 +1,6 @@
 import React from 'react';
-
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {CocktailPane} from "../../Cocktail";
-import {Switch, Route, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
@@ -25,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ContentPane = () => {
+export const ContentPane = ({children}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
@@ -42,22 +39,8 @@ export const ContentPane = () => {
 
     // {/*</div>*/}
     return (
-        <Switch>
-            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
-                <div className={classes.contentPane + ' ' + classes.contentPaneActive}>
-                    <CocktailPane/>
-                </div>
-            </Route>
-            <Route exact path="/cocktails">
-                <div className={classes.contentPane + ' ' + classes.contentPaneInactive}>
-                    <Typography>Select a cocktail.</Typography>
-                </div>
-            </Route>
-            <Route path="/">
-                <div className={classes.contentPane}>
-                    <Typography>No content configured</Typography>
-                </div>
-            </Route>
-        </Switch>
+        <div className={classes.contentPane + ' ' + classes.contentPaneActive}>
+            {children}
+        </div>
     )
 }

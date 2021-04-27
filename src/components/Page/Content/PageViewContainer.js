@@ -1,17 +1,12 @@
 import React from "react";
-import {ScrollPane} from "../ScrollPane";
-import {ContentPane} from "./ContentPane";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
+import {Switch, Route} from "react-router-dom";
+import {CocktailsPage} from "../../Pages";
 
 const useStyles = makeStyles((theme) => ({
     pageViewContainer: {
         display: 'flex',
         overflow: 'hidden',
-        flex: 1
-    },
-    paneContainer: {
-        display: 'flex',
-        flexDirection: 'column',
         flex: 1
     }
 }))
@@ -22,8 +17,10 @@ export const PageViewContainer = () => {
 
     return (
         <div className={classes.pageViewContainer}>
-            <ScrollPane />
-            <ContentPane />
+            <Switch>
+                <Route path="/cocktails" component={CocktailsPage}/>
+            </Switch>
         </div>
+
     )
 }

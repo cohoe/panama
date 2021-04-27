@@ -33,6 +33,14 @@ export const ContentPane = () => {
     console.log("LOLZ")
     console.log(cocktail_slug, spec_slug)
 
+    // @TODO wrap this
+    // {/*<div className={classes.paneContainer}>*/}
+    // {/*<ActionBar>*/}
+    // {/*    <ActionBarButton text={"previous"}/>*/}
+    // {/*    <ActionBarButton text={"next"}/>*/}
+    // {/*</ActionBar>*/}
+
+    {/*</div>*/}
     return (
         <Switch>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug">

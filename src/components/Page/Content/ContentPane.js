@@ -40,7 +40,7 @@ export const ContentPane = () => {
     // {/*    <ActionBarButton text={"next"}/>*/}
     // {/*</ActionBar>*/}
 
-    {/*</div>*/}
+    // {/*</div>*/}
     return (
         <Switch>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug">

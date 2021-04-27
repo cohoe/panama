@@ -6,8 +6,8 @@ export const NotesList = ({notes}) => {
     return (
         <>
             <List>
-                {notes.map((note) => (
-                    <ListItem>
+                {notes.map((note, index) => (
+                    <ListItem key={index}>
                         {note.text}
                     </ListItem>
                 ))}

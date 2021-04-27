@@ -46,22 +46,5 @@ export const ScrollPane = ({children}) => {
             {/*    <CocktailList/>*/}
             {/*</div>*/}
         </div>
-        // <Switch>
-        //     <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
-        //         <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
-        //             <ActionBar>
-        //                 <ActionBarButton text={"history"}/>
-        //             </ActionBar>
-        //             <div className={classes.scrollPaneInner}>
-        //                 <CocktailList/>
-        //             </div>
-        //         </div>
-        //     </Route>
-        //     <Route path="/">
-        //         <div className={classes.scrollPane}>
-        //             <Typography>Hork Tork</Typography>
-        //         </div>
-        //     </Route>
-        // </Switch>
     )
 }

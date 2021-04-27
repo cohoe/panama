@@ -21,6 +21,5 @@ export const PageViewContainer = () => {
                 <Route path="/cocktails" component={CocktailsPage}/>
             </Switch>
         </div>
-
     )
 }

@@ -25,14 +25,15 @@ export const ContentContainer = () => {
     const classes = useStyles(theme);
 
     // @TODO refactor this to get the stuff into ContentPane
+    // @TODO fix scrolling
     return (
         <div className={classes.contentContainer}>
             <ScrollPane />
             <div className={classes.paneContainer}>
-                <ActionBar>
-                    <ActionBarButton text={"previous"}/>
-                    <ActionBarButton text={"next"}/>
-                </ActionBar>
+                {/*<ActionBar>*/}
+                {/*    <ActionBarButton text={"previous"}/>*/}
+                {/*    <ActionBarButton text={"next"}/>*/}
+                {/*</ActionBar>*/}
                 <ContentPane />
             </div>
         </div>

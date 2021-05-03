@@ -15,25 +15,25 @@ export const CocktailsPage = () => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
+    // @TODO why does one path need the full endpoint and the other doesnt?
     return (
         <Switch>
             <Route path={"/cocktails/:cocktail_slug/:spec_slug"}>
                 <ScrollPane>
                     <CocktailList/>
                 </ScrollPane>
-                <ContentPane>
+                <ContentPane primaryView={true}>
                     <CocktailPane/>
                 </ContentPane>
             </Route>
             <Route path={'/'}>
-                <ScrollPane>
+                <ScrollPane primaryView={true}>
                     <CocktailList/>
                 </ScrollPane>
                 <ContentPane>
                     <Typography>Select a cocktail.</Typography>
                 </ContentPane>
             </Route>
-
         </Switch>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -31,13 +32,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ScrollPane = ({children}) => {
+export const ScrollPane = ({children, primaryView = false}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
-    // @TODO fix scrolling on mobile
+    const viewClass = primaryView ? classes.scrollPaneActive : classes.scrollPaneInactive
+
     return (
-        <div className={classes.scrollPane + ' ' + classes.scrollPane}>
+        <div className={classNames(classes.scrollPane, viewClass)}>
             {children}
             {/*<ActionBar>*/}
             {/*    <ActionBarButton text={"history"}/>*/}

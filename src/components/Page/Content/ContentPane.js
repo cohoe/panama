@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {useParams} from "react-router-dom";
+import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const ContentPane = ({children}) => {
+export const ContentPane = ({children, primaryView = false}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
@@ -36,10 +37,11 @@ export const ContentPane = ({children}) => {
     // {/*    <ActionBarButton text={"previous"}/>*/}
     // {/*    <ActionBarButton text={"next"}/>*/}
     // {/*</ActionBar>*/}
-
     // {/*</div>*/}
+    const viewClass = primaryView ? classes.contentPaneActive : classes.contentPaneInactive
+
     return (
-        <div className={classes.contentPane + ' ' + classes.contentPaneActive}>
+        <div className={classNames(classes.contentPane, viewClass)}>
             {children}
         </div>
     )

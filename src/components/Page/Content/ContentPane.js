@@ -1,7 +1,10 @@
 import React from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import classNames from "classnames";
+import {ActionBar} from "../ActionBar/ActionBar";
+import {ActionBarButton} from "../ActionBar/ActionBarButton";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
@@ -10,8 +13,7 @@ const useStyles = makeStyles((theme) => ({
         },
         display: 'flex',
         flexDirection: 'column',
-        overflowY: 'scroll',
-        padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
+        // overflowY: 'scroll',
     },
     contentPaneActive: {
         // display: 'flex'
@@ -20,29 +22,36 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             display: 'none'
         },
+    },
+    contentPaneInner: {
+        overflowY: 'scroll',
+        flex: 1,
     }
 }))
 
 export const ContentPane = ({children, primaryView = false}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
+    const history = useHistory();
 
     let {cocktail_slug, spec_slug} = useParams();
     console.log("LOLZ")
     console.log(cocktail_slug, spec_slug)
 
-    // @TODO wrap this
-    // {/*<div className={classes.paneContainer}>*/}
-    // {/*<ActionBar>*/}
-    // {/*    <ActionBarButton text={"previous"}/>*/}
-    // {/*    <ActionBarButton text={"next"}/>*/}
-    // {/*</ActionBar>*/}
-    // {/*</div>*/}
     const viewClass = primaryView ? classes.contentPaneActive : classes.contentPaneInactive
 
     return (
         <div className={classNames(classes.contentPane, viewClass)}>
-            {children}
+            <ActionBar>
+                <ActionBarButton text={"back"} onClick={() => {
+                    history.push('/cocktails')
+                }}/>
+                <ActionBarButton text={"previous"}/>
+                <ActionBarButton text={"next"}/>
+            </ActionBar>
+            <div className={classes.contentPaneInner}>
+                {children}
+            </div>
         </div>
     )
 }

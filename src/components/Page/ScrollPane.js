@@ -2,6 +2,8 @@ import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import classNames from "classnames";
+import {ActionBar} from "./ActionBar/ActionBar";
+import {ActionBarButton} from "./ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
-        overflowY: 'scroll',
+        // overflowY: 'scroll',
         display: 'flex',
         flexDirection: 'column',
         borderRight: '1px solid #000'
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
     scrollPaneInner: {
         overflowY: 'scroll',
+        flex: 1,
     }
 }))
 
@@ -40,13 +43,12 @@ export const ScrollPane = ({children, primaryView = false}) => {
 
     return (
         <div className={classNames(classes.scrollPane, viewClass)}>
-            {children}
-            {/*<ActionBar>*/}
-            {/*    <ActionBarButton text={"history"}/>*/}
-            {/*</ActionBar>*/}
-            {/*<div className={classes.scrollPaneInner}>*/}
-            {/*    <CocktailList/>*/}
-            {/*</div>*/}
+            <ActionBar>
+                <ActionBarButton text={"history"}/>
+            </ActionBar>
+            <div className={classes.scrollPaneInner}>
+                {children}
+            </div>
         </div>
     )
 }

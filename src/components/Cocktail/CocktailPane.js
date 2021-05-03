@@ -10,6 +10,8 @@ import {CocktailNotesCard} from "./CocktailNotesCard";
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {
         backgroundColor: 'pink',
+        padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
+
     }
 }))
 

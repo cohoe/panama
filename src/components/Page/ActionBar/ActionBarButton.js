@@ -8,16 +8,14 @@ const useStyles = makeStyles((theme) => ({
         // marginTop: 'auto',
         // marginBottom: 'auto'
     },
-    actionBarButton: {
-
-    }
+    actionBarButton: {}
 }))
 
-export const ActionBarButton = ({text}) => {
+export const ActionBarButton = ({text, onClick = null}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
     return (
-        <Button className={classes.actionBarButton}>{text}</Button>
+        <Button className={classes.actionBarButton} onClick={onClick}>{text}</Button>
     )
 }

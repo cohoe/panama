@@ -4,6 +4,7 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import classNames from "classnames";
 import {ActionBar} from "./ActionBar/ActionBar";
 import {ActionBarButton} from "./ActionBar/ActionBarButton";
+import {SearchBox} from "./ActionBar/SearchBox";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -44,7 +45,8 @@ export const ScrollPane = ({children, primaryView = false}) => {
     return (
         <div className={classNames(classes.scrollPane, viewClass)}>
             <ActionBar>
-                <ActionBarButton text={"history"}/>
+                {/*<ActionBarButton text={"history"}/>*/}
+                <SearchBox />
             </ActionBar>
             <div className={classes.scrollPaneInner}>
                 {children}

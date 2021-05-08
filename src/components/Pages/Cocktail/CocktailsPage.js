@@ -1,20 +1,11 @@
 import React from "react";
 import {ScrollPane, ContentPane} from "../../Page";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {CocktailList} from "../../Cocktail/CocktailList";
 import Typography from "@material-ui/core/Typography";
 import {Switch, Route} from "react-router-dom";
 import {CocktailPane} from "../../Cocktail";
 
-
-const useStyles = makeStyles((theme) => ({
-
-}))
-
 export const CocktailsPage = () => {
-    const theme = useTheme();
-    const classes = useStyles(theme);
-
     // @TODO why does one path need the full endpoint and the other doesnt?
     return (
         <Switch>

@@ -6,14 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailTitleCard} from "./CocktailTitleCard";
 import {CocktailNotesCard} from "./CocktailNotesCard";
-import Fab from "@material-ui/core/Fab";
-import MenuIcon from '@material-ui/icons/Menu';
 import {ActionButton} from "../Page/ActionButton";
 
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {
         backgroundColor: 'pink',
-        // padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
         padding: theme.spacing(2),
     }
 }))
@@ -77,7 +74,7 @@ export const CocktailPane = () => {
                             />
                         </Grid>
                     </Grid>
-                    <ActionButton />
+                    <ActionButton/>
                 </>
             )}
         </Paper>

@@ -4,7 +4,6 @@ import {useParams, useHistory} from "react-router-dom";
 import classNames from "classnames";
 import {ActionBar} from "../ActionBar/ActionBar";
 import {ActionBarButton} from "../ActionBar/ActionBarButton";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {

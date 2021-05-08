@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SearchBox = () => {
-    const classes = useStyles();
     const theme = useTheme();
+    const classes = useStyles(theme);
 
     return (
         <TextField

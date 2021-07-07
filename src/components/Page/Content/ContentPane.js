@@ -1,9 +1,9 @@
 import React from 'react';
-
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {CocktailPane} from "../../Cocktail";
-import {Switch, Route, useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
+import classNames from "classnames";
+import {ActionBar} from "../ActionBar/ActionBar";
+import {ActionBarButton} from "../ActionBar/ActionBarButton";
 
 const useStyles = makeStyles((theme) => ({
     contentPane: {
@@ -12,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
         },
         display: 'flex',
         flexDirection: 'column',
-        overflowY: 'scroll',
-        padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
+        // overflowY: 'scroll',
     },
     contentPaneActive: {
         // display: 'flex'
@@ -22,34 +21,36 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             display: 'none'
         },
+    },
+    contentPaneInner: {
+        overflowY: 'scroll',
+        flex: 1,
     }
 }))
 
-export const ContentPane = () => {
+export const ContentPane = ({children, primaryView = false}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
+    const history = useHistory();
 
     let {cocktail_slug, spec_slug} = useParams();
     console.log("LOLZ")
     console.log(cocktail_slug, spec_slug)
 
+    const viewClass = primaryView ? classes.contentPaneActive : classes.contentPaneInactive
+
     return (
-        <Switch>
-            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
-                <div className={classes.contentPane + ' ' + classes.contentPaneActive}>
-                    <CocktailPane/>
-                </div>
-            </Route>
-            <Route exact path="/cocktails">
-                <div className={classes.contentPane + ' ' + classes.contentPaneInactive}>
-                    <Typography>Select a cocktail.</Typography>
-                </div>
-            </Route>
-            <Route path="/">
-                <div className={classes.contentPane}>
-                    <Typography>No content configured</Typography>
-                </div>
-            </Route>
-        </Switch>
+        <div className={classNames(classes.contentPane, viewClass)}>
+            <ActionBar>
+                <ActionBarButton text={"back"} onClick={() => {
+                    history.push('/cocktails')
+                }}/>
+                <ActionBarButton text={"previous"}/>
+                <ActionBarButton text={"next"}/>
+            </ActionBar>
+            <div className={classes.contentPaneInner}>
+                {children}
+            </div>
+        </div>
     )
 }

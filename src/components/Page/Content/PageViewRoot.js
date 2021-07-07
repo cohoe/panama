@@ -1,13 +1,12 @@
 import React from "react";
-import {ContentContainer} from "./ContentContainer";
+import {PageViewContainer} from "./PageViewContainer";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
-import {BrowserRouter} from "react-router-dom";
 
 // @TODO something with this
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-    toolbarSpacer: {
+    appBarSpacer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
     },
-    contentParent: {
+    pageViewRoot: {
         flexGrow: 1,
         // padding: theme.spacing(3),
         width: `calc(100% - ${drawerWidth}px)`,
@@ -25,16 +24,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export const ContentParent = () => {
+export const PageViewRoot = () => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
     return (
-        <BrowserRouter>
-            <div className={classes.contentParent}>
-                <div className={classes.toolbarSpacer}/>
-                <ContentContainer/>
-            </div>
-        </BrowserRouter>
+        <div className={classes.pageViewRoot}>
+            <div className={classes.appBarSpacer}/>
+            <PageViewContainer/>
+        </div>
     )
 }

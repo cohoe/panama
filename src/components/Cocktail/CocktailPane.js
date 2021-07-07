@@ -6,10 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailTitleCard} from "./CocktailTitleCard";
 import {CocktailNotesCard} from "./CocktailNotesCard";
+import {ActionButton} from "../Page/ActionButton";
 
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {
         backgroundColor: 'pink',
+        padding: theme.spacing(2),
     }
 }))
 
@@ -72,6 +74,7 @@ export const CocktailPane = () => {
                             />
                         </Grid>
                     </Grid>
+                    <ActionButton/>
                 </>
             )}
         </Paper>

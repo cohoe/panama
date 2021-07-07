@@ -1,11 +1,9 @@
 import React from 'react';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {CocktailList} from "../Cocktail/CocktailList";
-import {Route, Switch} from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
 import {ActionBar} from "./ActionBar/ActionBar";
-import {ActionBarButton} from "./ActionBar/ActionBarButton";
+import {SearchBox} from "./ActionBar/SearchBox";
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {
@@ -33,35 +31,25 @@ const useStyles = makeStyles((theme) => ({
     },
     scrollPaneInner: {
         overflowY: 'scroll',
+        flex: 1,
     }
 }))
 
-export const ScrollPane = () => {
+export const ScrollPane = ({children, primaryView = false}) => {
     const theme = useTheme();
     const classes = useStyles(theme);
 
+    const viewClass = primaryView ? classes.scrollPaneActive : classes.scrollPaneInactive
+
     return (
-        <Switch>
-            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
-                    <ActionBar>
-                        <ActionBarButton text={"history"}/>
-                    </ActionBar>
-                    <div className={classes.scrollPaneInner}>
-                        <CocktailList/>
-                    </div>
-                </div>
-            </Route>
-            <Route exact path="/cocktails/">
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
-                    <CocktailList/>
-                </div>
-            </Route>
-            <Route path="/">
-                <div className={classes.scrollPane}>
-                    <Typography>Hork Tork</Typography>
-                </div>
-            </Route>
-        </Switch>
+        <div className={classNames(classes.scrollPane, viewClass)}>
+            <ActionBar>
+                {/*<ActionBarButton text={"history"}/>*/}
+                <SearchBox/>
+            </ActionBar>
+            <div className={classes.scrollPaneInner}>
+                {children}
+            </div>
+        </div>
     )
 }

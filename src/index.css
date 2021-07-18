@@ -41,3 +41,8 @@ code {
         display: none;
     }
 }
+
+/* Card stuffs */
+.list-card {
+    font-size: 14pt;
+}

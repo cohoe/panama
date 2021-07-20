@@ -8,9 +8,9 @@ const useStyles = makeStyles({
     root: {},
 });
 
-// const useQuery = () => {
-//     return new URLSearchParams(useLocation().search);
-// }
+const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+}
 
 
 export const CocktailSearchForm = ({}) => {
@@ -31,7 +31,7 @@ export const CocktailSearchForm = ({}) => {
 
     const handleSubmit = (event) => {
         console.log("SENDING")
-        console.log(event)<
+        console.log(event)
         console.log(construction)
         // query.append('construction', construction)
         // history.push({search: `?construction={construction}`})
@@ -51,7 +51,8 @@ export const CocktailSearchForm = ({}) => {
         <div className={classes.root}>
             <form method={"GET"}>
                 <FormInputSelect items={{'shake': 'Shake', 'stir': 'Stir', 'swizzle': 'Swizzle', 'build': 'Build'}}
-                                 onChange={(e) => setConstruction(e.target.value)} initialValue={construction}/>
+                                 onChange={(e) => setConstruction(e.target.value)} initialValue={construction}
+                                 query_parameter={"construction"}/>
                 {/*onChange={handleConstruction}/>*/}
                 <button type={"submit"} onClick={handleSubmit}>Go Go Go</button>
             </form>

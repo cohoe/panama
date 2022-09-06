@@ -16,6 +16,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {ContentParent} from "./Content/ContentParent";
 import {SidebarButtons} from "./SidebarButtons";
 
+import {BrowserRouter} from "react-router-dom";
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -97,7 +100,9 @@ export default function MainLayout() {
     };
 
     return (
-        <div className={classes.root}>
+      <BrowserRouter>
+
+      <div className={classes.root}>
             <CssBaseline />
             <AppBar
                 position="fixed"
@@ -145,5 +150,6 @@ export default function MainLayout() {
             </Drawer>
             <ContentParent />
         </div>
+          </BrowserRouter>
     );
 }

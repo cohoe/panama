@@ -1,7 +1,6 @@
 import React from "react";
 import {ContentContainer} from "./ContentContainer";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
-import {BrowserRouter} from "react-router-dom";
 
 // @TODO something with this
 const drawerWidth = 240;
@@ -30,11 +29,9 @@ export const ContentParent = () => {
     const classes = useStyles(theme);
 
     return (
-        <BrowserRouter>
             <div className={classes.contentParent}>
                 <div className={classes.toolbarSpacer}/>
                 <ContentContainer/>
             </div>
-        </BrowserRouter>
     )
 }

@@ -54,7 +54,12 @@ export const ScrollPane = () => {
             </Route>
             <Route exact path="/cocktails/">
                 <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
-                    <CocktailList/>
+                    <ActionBar>
+                        <ActionBarButton text={"history"}/>
+                    </ActionBar>
+                    <div className={classes.scrollPaneInner}>
+                        <CocktailList/>
+                    </div>
                 </div>
             </Route>
             <Route path="/">

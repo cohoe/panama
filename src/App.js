@@ -43,7 +43,7 @@ import React from "react";
 // END API JUNK
 
 
-import MainLayout from "./components/Page/Main"
+import MainLayout from "./components/Page/MainLayout"
 
 function App({name = 'Foo'}) {
     return (

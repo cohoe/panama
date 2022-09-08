@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {CocktailSpecCard} from './CocktailSpecCard'
 import {useParams} from 'react-router-dom'
-import {Paper} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {Paper, Grid, useTheme} from "@mui/material";
 import {CocktailTitleCard} from "./CocktailTitleCard";
 import {CocktailNotesCard} from "./CocktailNotesCard";
+import {CocktailSpecCard} from './CocktailSpecCard';
+import {makeStyles} from '@mui/styles';
+
 
 const useStyles = makeStyles((theme) => ({
     cocktailPaper: {

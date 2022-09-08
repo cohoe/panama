@@ -1,8 +1,8 @@
 import React from 'react'
-import {makeStyles} from "@material-ui/core/styles";
-import {Card, CardContent, Typography} from '@material-ui/core'
+import {Card, CardContent, Typography} from "@mui/material";
 import {SectionCard} from "../Section/SectionCard";
 import {NotesList} from "../Text/NotesList";
+import {makeStyles} from '@mui/styles';
 
 
 const useStyles = makeStyles({

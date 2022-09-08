@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {makeStyles, useTheme} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import {useTheme, Typography} from '@mui/material';
 import {CocktailPane} from "../../Cocktail";
 import {Route, Routes, useParams} from "react-router-dom";
+import {makeStyles} from '@mui/styles';
 
 
 const useStyles = makeStyles((theme) => ({

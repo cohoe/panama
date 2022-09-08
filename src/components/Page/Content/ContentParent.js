@@ -1,6 +1,8 @@
 import React from "react";
 import {ContentContainer} from "./ContentContainer";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
+import {useTheme} from "@mui/material";
+import {makeStyles} from '@mui/styles';
+
 
 // @TODO something with this
 const drawerWidth = 240;

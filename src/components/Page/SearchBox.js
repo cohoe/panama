@@ -1,11 +1,7 @@
-import {InputAdornment, TextField} from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
-import ClearIcon from "@material-ui/icons/Clear";
-import TuneIcon from "@material-ui/icons/Tune";
-import {alpha, makeStyles, useTheme} from "@material-ui/core/styles";
-import InputBase from '@material-ui/core/InputBase';
+import {alpha, useTheme, InputBase} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search"
+import {makeStyles} from '@mui/styles';
 
 
 const useStyles = makeStyles((theme) => ({

@@ -1,7 +1,8 @@
 import React from 'react'
-import {Typography} from '@material-ui/core'
-import {makeStyles} from "@material-ui/core/styles";
-import HelpOutlineOutlinedIcon from '@material-ui/icons/HelpOutlineOutlined';
+import {Typography} from '@mui/material'
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutline"
+import {makeStyles} from '@mui/styles';
+
 
 const useStyles = makeStyles({
     cardLabel: {

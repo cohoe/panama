@@ -1,11 +1,11 @@
 import React from "react";
 import {ScrollPane} from "../ScrollPane";
 import {ContentPane} from "./ContentPane";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {ActionBar} from "../ActionBar/ActionBar";
-// import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-// import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import {useTheme} from "@mui/material";
 import {ActionBarButton} from "../ActionBar/ActionBarButton";
+import {makeStyles} from '@mui/styles';
+
 
 const useStyles = makeStyles((theme) => ({
     contentContainer: {

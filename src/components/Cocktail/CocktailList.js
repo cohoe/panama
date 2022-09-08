@@ -1,11 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {CocktailListCard} from "./CocktailListCard";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@mui/styles";
 import {Link} from "react-router-dom";
-// import {Card, CardContent, Container, ListItem, Tabs, Tab, Typography, Button} from '@material-ui/core'
-// import {TabPanel} from '@material-ui/lab'
-// // import TabPanel from '@material-ui/core/TabsP'
-// import {Spec} from '../Spec'
 
 const useStyles = makeStyles({
     root: {

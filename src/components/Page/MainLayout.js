@@ -1,26 +1,23 @@
 import React from 'react';
 import clsx from 'clsx';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import {
+    useTheme,
+    Drawer,
+    AppBar,
+    Toolbar,
+    CssBaseline,
+    Typography,
+    Divider,
+    IconButton,
+} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import {SearchBox} from './SearchBox';
-
-
-
 import {ContentParent} from "./Content/ContentParent";
 import {SidebarButtons} from "./SidebarButtons";
-
 import {BrowserRouter} from "react-router-dom";
-import {TextField} from "@material-ui/core";
-
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const drawerWidth = 240;
 
@@ -126,7 +123,7 @@ export default function MainLayout() {
                         <Typography variant="h6" noWrap>
                             Panama
                         </Typography>
-                        <SearchBox />
+                        <SearchBox/>
                     </Toolbar>
                 </AppBar>
                 <Drawer

@@ -1,9 +1,10 @@
 import React from 'react'
-import {List, ListItem, Typography} from '@material-ui/core'
+import {List, ListItem, Typography} from '@mui/material'
 import {Component} from '../Component'
 import {Text} from "../Text";
-import {makeStyles} from "@material-ui/core/styles";
 import {SectionCard} from "../Section/SectionCard";
+import {makeStyles} from '@mui/styles';
+
 
 const useStyles = makeStyles({
     title: {

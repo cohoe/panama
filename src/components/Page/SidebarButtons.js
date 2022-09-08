@@ -1,10 +1,7 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import LocalBarIcon from "@material-ui/icons/LocalBar";
-import HomeIcon from "@material-ui/icons/Home";
-import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
+import {ListItem, ListItemIcon, ListItemText, List} from "@mui/material";
+import LocalBarIcon from "@mui/icons-material/LocalBar"
+import HomeIcon from "@mui/icons-material/Home"
 import {Link} from "react-router-dom";
 
 export const SidebarButtons = () => {

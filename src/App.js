@@ -44,11 +44,17 @@ import React from "react";
 
 
 import MainLayout from "./components/Page/MainLayout"
+import { ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles'
+
+
+const theme = createTheme();
 
 function App({name = 'Foo'}) {
-    return (
-        <MainLayout />
-    )
+    // return (
+    //     <MainLayout />
+    // )
+    return <ThemeProvider theme={theme}><MainLayout/></ThemeProvider>;
 }
 
 export default App;

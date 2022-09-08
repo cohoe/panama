@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {Route, Routes} from "react-router-dom";
+import {useTheme, Typography} from '@mui/material';
 import {CocktailList} from "../Cocktail/CocktailList";
 import {CocktailSearch} from "../Cocktail/CocktailSearch";
-import {Route, Routes} from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import {ActionBar} from "./ActionBar/ActionBar";
 import {ActionBarButton} from "./ActionBar/ActionBarButton";
+import {makeStyles} from '@mui/styles';
+
 
 const useStyles = makeStyles((theme) => ({
     scrollPane: {

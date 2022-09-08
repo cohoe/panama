@@ -3,7 +3,7 @@ import React from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {CocktailList} from "../Cocktail/CocktailList";
 import {CocktailSearch} from "../Cocktail/CocktailSearch";
-import {Route, Switch} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import {ActionBar} from "./ActionBar/ActionBar";
 import {ActionBarButton} from "./ActionBar/ActionBarButton";
@@ -42,8 +42,8 @@ export const ScrollPane = () => {
     const classes = useStyles(theme);
 
     return (
-        <Switch>
-            <Route exact path="/search/cocktails/">
+        <Routes>
+            <Route exact path="/search/cocktails/" element={
                 <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
                     <ActionBar>
                         <ActionBarButton text={"clear"}/>
@@ -51,9 +51,8 @@ export const ScrollPane = () => {
                     <div className={classes.scrollPaneInner}>
                         <CocktailSearch/>
                     </div>
-                </div>
-            </Route>
-            <Route exact path="/cocktails/:cocktail_slug/:spec_slug">
+                </div>}/>
+            <Route exact path="/cocktails/:cocktail_slug/:spec_slug" element={
                 <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
                     <ActionBar>
                         <ActionBarButton text={"history"}/>
@@ -62,9 +61,8 @@ export const ScrollPane = () => {
                     <div className={classes.scrollPaneInner}>
                         <CocktailList/>
                     </div>
-                </div>
-            </Route>
-            <Route exact path="/cocktails/">
+                </div>}/>
+            <Route exact path="/cocktails/" element={
                 <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
                     <ActionBar>
                         <ActionBarButton text={"history"}/>
@@ -73,13 +71,11 @@ export const ScrollPane = () => {
                     <div className={classes.scrollPaneInner}>
                         <CocktailList/>
                     </div>
-                </div>
-            </Route>
-            <Route path="/">
+                </div>}/>
+            <Route path="/" element={
                 <div className={classes.scrollPane}>
                     <Typography>Hork Tork</Typography>
-                </div>
-            </Route>
-        </Switch>
+                </div>}/>
+        </Routes>
     )
 }

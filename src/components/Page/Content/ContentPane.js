@@ -3,32 +3,29 @@ import React from 'react';
 import {useTheme, Typography} from '@mui/material';
 import {CocktailPane} from "../../Cocktail";
 import {Route, Routes, useParams} from "react-router-dom";
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
 
-const useStyles = makeStyles((theme) => ({
-    contentPane: {
-        [theme.breakpoints.up('sm')]: {
-            flex: 1
-        },
-        display: 'flex',
-        flexDirection: 'column',
-        overflowY: 'scroll',
-        padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
+const ContentPaneBox = styled('div')(({theme}) => ({
+    [theme.breakpoints.up('sm')]: {
+        flex: 1
     },
-    contentPaneActive: {
-        // display: 'flex'
+    display: 'flex',
+    flexDirection: 'column',
+    overflowY: 'scroll',
+    padding: '16px', // This aligns with grid spacing=2. https://material-ui.com/components/grid/
+}));
+
+const activeMixin = (theme) => ({});
+
+const inactiveMixin = (theme) => ({
+    [theme.breakpoints.down('xs')]: {
+        display: 'none'
     },
-    contentPaneInactive: {
-        [theme.breakpoints.down('xs')]: {
-            display: 'none'
-        },
-    }
-}))
+});
 
 export const ContentPane = () => {
     const theme = useTheme();
-    const classes = useStyles(theme);
 
     let {cocktail_slug, spec_slug} = useParams();
     console.log("LOLZ")
@@ -37,17 +34,17 @@ export const ContentPane = () => {
     return (
         <Routes>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug" element={
-                <div className={classes.contentPane + ' ' + classes.contentPaneActive}>
+                <ContentPaneBox sx={{...activeMixin(theme)}}>
                     <CocktailPane/>
-                </div>}/>
+                </ContentPaneBox>}/>
             <Route exact path="/cocktails" element={
-                <div className={classes.contentPane + ' ' + classes.contentPaneInactive}>
+                <ContentPaneBox sx={{...inactiveMixin(theme)}}>
                     <Typography>Select a cocktail.</Typography>
-                </div>}/>
+                </ContentPaneBox>}/>
             <Route path="/" element={
-                <div className={classes.contentPane}>
+                <ContentPaneBox sx={{...inactiveMixin(theme)}}>
                     <Typography>No content configured</Typography>
-                </div>}/>
+                </ContentPaneBox>}/>}/>
         </Routes>
     )
 }

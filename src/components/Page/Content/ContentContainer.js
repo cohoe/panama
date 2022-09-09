@@ -4,37 +4,37 @@ import {ContentPane} from "./ContentPane";
 import {ActionBar} from "../ActionBar/ActionBar";
 import {useTheme} from "@mui/material";
 import {ActionBarButton} from "../ActionBar/ActionBarButton";
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
 
-const useStyles = makeStyles((theme) => ({
-    contentContainer: {
-        display: 'flex',
-        overflow: 'hidden',
-        flex: 1
-    },
-    paneContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        flex: 1
-    }
-}))
+const StyledContentContainer = styled('div')(({theme}) => ({
+    display: 'flex',
+    overflow: 'hidden',
+    flex: 1,
+    background: 'yellow'
+}));
+
+const ContentContainerInner = styled('div')(({theme}) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    background: 'cyan'
+}));
 
 export const ContentContainer = () => {
     const theme = useTheme();
-    const classes = useStyles(theme);
 
     // @TODO refactor this to get the stuff into ContentPane
     return (
-        <div className={classes.contentContainer}>
+        <StyledContentContainer>
             <ScrollPane />
-            <div className={classes.paneContainer}>
+            <ContentContainerInner>
                 <ActionBar>
                     <ActionBarButton text={"previous"}/>
                     <ActionBarButton text={"next"}/>
                 </ActionBar>
                 <ContentPane />
-            </div>
-        </div>
+            </ContentContainerInner>
+        </StyledContentContainer>
     )
 }

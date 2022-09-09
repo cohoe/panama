@@ -1,8 +1,9 @@
 import React from 'react'
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutline"
 import {styled} from "@mui/material/styles";
+import {Typography} from "@mui/material";
 
-const CardLabel = styled('Typography')(({theme}) => ({
+const CardLabel = styled(Typography)(() => ({
     fontSize: '1rem',
     fontWeight: 'bold',
     marginBottom: 'auto',
@@ -14,12 +15,13 @@ const CardTitleContainer = styled('div')(({theme}) => ({
     width: '100%',
     paddingLeft: '16px',
     paddingRight: '16px',
-    borderBottom: '1px solid black',
+    borderBottom: '1px solid',
+    borderColor: theme.palette.divider,
     minHeight: '2rem',
     background: 'deepskyblue'
 }));
 
-const CardHelpIcon = styled('HelpOutlineOutlinedIcon')(({theme}) => ({
+const CardHelpIcon = styled(HelpOutlineOutlinedIcon)(() => ({
     marginLeft: 'auto',
     marginBottom: 'auto',
     marginTop: 'auto'

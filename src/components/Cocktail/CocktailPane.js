@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import {Grid, useTheme} from "@mui/material";
+import {Grid, useTheme, Paper} from "@mui/material";
 import {CocktailTitleCard} from "./CocktailTitleCard";
 import {CocktailNotesCard} from "./CocktailNotesCard";
 import {CocktailSpecCard} from './CocktailSpecCard';
 import {styled} from "@mui/material/styles";
 
-const StyledPaper = styled('Paper')(({theme}) => ({
+const StyledPaper = styled(Paper)(() => ({
     backgroundColor: 'pink',
 }));
 
@@ -49,7 +49,7 @@ export const CocktailPane = () => {
     }, [cocktail, spec_slug])
 
     return (
-        <StyledPaper>
+        <StyledPaper theme={theme}>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <>

@@ -1,39 +1,38 @@
 import React from "react";
 import {ContentContainer} from "./ContentContainer";
 import {useTheme} from "@mui/material";
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
 
 // @TODO something with this
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
-    toolbarSpacer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-    },
-    contentParent: {
-        flexGrow: 1,
-        // padding: theme.spacing(3),
-        width: `calc(100% - ${drawerWidth}px)`,
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}))
+const StyledContentParent = styled('div')(({theme}) => ({
+    flexGrow: 1,
+    // padding: theme.spacing(3),
+    width: `calc(100% - ${drawerWidth}px)`,
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+}));
+
+const ToolbarSpacer = styled('div')(({theme}) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+}));
+
 
 export const ContentParent = () => {
     const theme = useTheme();
-    const classes = useStyles(theme);
 
     return (
-            <div className={classes.contentParent}>
-                <div className={classes.toolbarSpacer}/>
-                <ContentContainer/>
-            </div>
+        <StyledContentParent>
+            <ToolbarSpacer theme={theme} />
+            <ContentContainer/>
+        </StyledContentParent>
     )
 }

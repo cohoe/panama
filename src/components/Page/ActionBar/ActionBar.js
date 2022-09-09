@@ -1,34 +1,24 @@
 import React from 'react';
 
 import {useTheme} from '@mui/material';
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
-
-const useStyles = makeStyles((theme) => ({
-    actionBar: {
-        backgroundColor: 'white',
-        height: '3rem',
-        minHeight: '3rem',
-        display: 'flex',
-        // marginBottom: '16px',
-        borderBottom: '1px solid black',
-    },
-    actionBarIcon: {
-        // marginTop: 'auto',
-        // marginBottom: 'auto'
-    },
-    actionBarButton: {
-
-    }
-}))
+const StyledActionBar = styled('div')(({theme}) => ({
+    backgroundColor: theme.palette.background.paper,
+    height: '3rem',
+    minHeight: '3rem',
+    display: 'flex',
+    // marginBottom: '16px',
+    borderBottom: "1px solid",
+    borderColor: theme.palette.divider,
+}));
 
 export const ActionBar = ({children}) => {
     const theme = useTheme();
-    const classes = useStyles(theme);
 
     return (
-        <div className={classes.actionBar}>
+        <StyledActionBar theme={theme}>
             {children}
-        </div>
+        </StyledActionBar>
     )
 }

@@ -62,30 +62,5 @@ export function SearchBox() {
                 inputProps={{'aria-label': 'search'}}
             />
         </div>
-        // <div className={classes.searchBoxContainer}>
-        //     <TextField
-        //         className={classes.searchField}
-        //         InputProps={{
-        //             startAdornment: (
-        //                 <InputAdornment position="start">
-        //                     <IconButton edge="start" color="secondary">
-        //                         <SearchIcon/>
-        //                     </IconButton>
-        //                 </InputAdornment>
-        //             ),
-        //             endAdornment: (
-        //                 <InputAdornment position="end">
-        //                     <IconButton edge="end" color="secondary">
-        //                         <ClearIcon/>
-        //                     </IconButton>
-        //                     <IconButton edge="end" color="secondary">
-        //                         <TuneIcon/>
-        //                     </IconButton>
-        //                 </InputAdornment>
-        //             ),
-        //         }}
-        //         variant={"outlined"}
-        //     />
-        // </div>
     )
 }

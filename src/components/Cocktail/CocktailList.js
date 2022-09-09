@@ -1,20 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {CocktailListCard} from "./CocktailListCard";
-import {makeStyles} from "@mui/styles";
 import {Link} from "react-router-dom";
 
-const useStyles = makeStyles({
-    root: {
-        // https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div
-        // height: '100%',
-        // overflow: 'scroll'
-    },
-});
-
-
 export const CocktailList = () => {
-    const classes = useStyles();
-
     const [cocktails, setCocktails] = useState()
     const [loading, setLoading] = useState(true)
 
@@ -38,7 +26,7 @@ export const CocktailList = () => {
     }
 
     return (
-        <div className={classes.root}>
+        <div>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <>

@@ -1,22 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import {Paper, Grid, useTheme} from "@mui/material";
+import {Grid, useTheme} from "@mui/material";
 import {CocktailTitleCard} from "./CocktailTitleCard";
 import {CocktailNotesCard} from "./CocktailNotesCard";
 import {CocktailSpecCard} from './CocktailSpecCard';
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
-
-const useStyles = makeStyles((theme) => ({
-    cocktailPaper: {
-        backgroundColor: 'pink',
-    }
-}))
+const StyledPaper = styled('Paper')(({theme}) => ({
+    backgroundColor: 'pink',
+}));
 
 export const CocktailPane = () => {
     let {cocktail_slug, spec_slug} = useParams();
     const theme = useTheme();
-    const classes = useStyles(theme);
 
     const [cocktail, setCocktail] = useState()
     const [loading, setLoading] = useState(true)
@@ -53,7 +49,7 @@ export const CocktailPane = () => {
     }, [cocktail, spec_slug])
 
     return (
-        <Paper className={classes.cocktailPaper}>
+        <StyledPaper>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <>
@@ -74,6 +70,6 @@ export const CocktailPane = () => {
                     </Grid>
                 </>
             )}
-        </Paper>
+        </StyledPaper>
     )
 }

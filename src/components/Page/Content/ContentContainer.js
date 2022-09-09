@@ -29,6 +29,10 @@ export const ContentContainer = () => {
         <StyledContentContainer>
             <ScrollPane />
             <ContentContainerInner>
+                <ActionBar>
+                    <ActionBarButton text={"previous"}/>
+                    <ActionBarButton text={"next"}/>
+                </ActionBar>
                 <ContentPane />
             </ContentContainerInner>
         </StyledContentContainer>

@@ -1,39 +1,35 @@
 import React from 'react'
-import {Typography} from '@mui/material'
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutline"
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
+const CardLabel = styled('Typography')(({theme}) => ({
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    marginBottom: 'auto',
+    marginTop: 'auto'
+}));
 
-const useStyles = makeStyles({
-    cardLabel: {
-        fontSize: '1rem',
-        fontWeight: 'bold',
-        marginBottom: 'auto',
-        marginTop: 'auto'
-    },
-    cardTitleContainer: {
-        display: 'flex',
-        width: '100%',
-        paddingLeft: '16px',
-        paddingRight: '16px',
-        borderBottom: '1px solid black',
-        minHeight: '2rem',
-        background: 'deepskyblue'
-    },
-    helpIcon: {
-        marginLeft: 'auto',
-        marginBottom: 'auto',
-        marginTop: 'auto'
-    }
-});
+const CardTitleContainer = styled('div')(({theme}) => ({
+    display: 'flex',
+    width: '100%',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    borderBottom: '1px solid black',
+    minHeight: '2rem',
+    background: 'deepskyblue'
+}));
+
+const CardHelpIcon = styled('HelpOutlineOutlinedIcon')(({theme}) => ({
+    marginLeft: 'auto',
+    marginBottom: 'auto',
+    marginTop: 'auto'
+}));
 
 export const SectionTitle = ({title}) => {
-    const classes = useStyles();
-
     return (
-        <div className={classes.cardTitleContainer}>
-            <Typography className={classes.cardLabel}>{title}</Typography>
-            <HelpOutlineOutlinedIcon className={classes.helpIcon}/>
-        </div>
+        <CardTitleContainer>
+            <CardLabel>{title}</CardLabel>
+            <CardHelpIcon/>
+        </CardTitleContainer>
     )
 }

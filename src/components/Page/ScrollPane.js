@@ -73,9 +73,12 @@ export const ScrollPane = () => {
                     </ScrollPaneInner>
                 </ScrollPaneOuterActive>}/>
             <Route path="/" element={
-                <ScrollPane>
-                    <Typography>Hork Tork</Typography>
-                </ScrollPane>}/>
+                <ScrollPaneOuterActive>
+                    <ActionBar></ActionBar>
+                    <ScrollPaneInner>
+                        <Typography>Hork Tork</Typography>
+                    </ScrollPaneInner>
+                </ScrollPaneOuterActive>}/>
         </Routes>
     )
 }

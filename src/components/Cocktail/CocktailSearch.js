@@ -21,6 +21,13 @@ const top100Films = [
     {title: "Schindler's List", year: 1993},
 ];
 
+const constructions = [
+    {value: "stir", label: "Stir"},
+    {value: "shake", label: "Shake"},
+    {value: "build", label: "Build"},
+    {value: "swizzle", label: "Swizzle"},
+]
+
 const SearchPaneWrapper = styled(Box)(({theme}) => ({
     label: 'SearchPaneWrapper',
     width: '100%',
@@ -30,83 +37,93 @@ const SearchPaneWrapper = styled(Box)(({theme}) => ({
     padding: theme.spacing(1, 1),
 }))
 
+const AutocompleteFormControl = ({id, options=[], placeholder="", label=""}) => {
+    const theme = useTheme();
+    return (
+        <FormControl>
+            <InputLabel shrink variant="standard">{label}</InputLabel>
+            <Autocomplete
+                multiple
+                id={id}
+                options={options}
+                getOptionLabel={(option) => option.title}
+                filterSelectedOptions
+                size={"small"}
+                sx={{marginTop: theme.spacing(2)}}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        variant="standard"
+                        // label="Include Components"
+                        placeholder={placeholder}
+                    />
+                )}
+            />
+        </FormControl>
+    )
+}
+
+const ToggleButtonGroupControl = ({id, buttons=[], label=""}) => {
+    const theme = useTheme();
+    const [options, setOptions] = React.useState([])
+
+    const updateOptions = (event, newOptions) => {
+        setOptions(newOptions)
+    }
+    return (
+        <FormControl>
+            <InputLabel shrink variant="standard">{label}</InputLabel>
+            <ToggleButtonGroup
+                id={id}
+                value={options}
+                onChange={updateOptions}
+                aria-label={id}
+                sx={{marginTop: theme.spacing(2)}}
+            >
+                {buttons.map((option, i) => (
+                    <ToggleButton key={option.value} value={option.value} aria-label={option.value}>
+                        {option.label}
+                    </ToggleButton>
+                ))}
+                {/*<ToggleButton value="stir" aria-label="stir">*/}
+                {/*    Stir*/}
+                {/*</ToggleButton>*/}
+                {/*<ToggleButton value="shake" aria-label="shake">*/}
+                {/*    Shake*/}
+                {/*</ToggleButton>*/}
+                {/*<ToggleButton value="build" aria-label="build">*/}
+                {/*    Build*/}
+                {/*</ToggleButton>*/}
+                {/*<ToggleButton value="swizzle" aria-label="swizzle">*/}
+                {/*    Swizzle*/}
+                {/*</ToggleButton>*/}
+            </ToggleButtonGroup>
+        </FormControl>
+    )
+}
+
 export const CocktailSearch = () => {
     const theme = useTheme();
-    const [constructions, setConstructions] = React.useState([])
+    const [components, setComponents] = React.useState([])
+    const [loading, setLoading] = React.useState(true)
 
-    const updateConstructions = (event, newConstructions) => {
-        setConstructions(newConstructions)
+    const fetchIngredients = async () => {
+        const response = await fetch(`http://localhost:8080/api/v1/ingredients`)
+        const json = await response.json()
+        setComponents(json)
+        setLoading(false)
     }
+
+    React.useEffect(() => {
+        fetchIngredients()
+    }, [])
 
     return (
         <SearchPaneWrapper theme={theme}>
             <Stack spacing={2} sx={{width: 'inherit', overflow: 'hidden'}}>
-                <FormControl>
-                    <InputLabel shrink variant="standard" forHtml={"include-components"}>Include Components</InputLabel>
-                    <Autocomplete
-                        multiple
-                        id="include-components"
-                        options={top100Films}
-                        getOptionLabel={(option) => option.title}
-                        filterSelectedOptions
-                        size={"small"}
-                        sx={{marginTop: theme.spacing(2)}}
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                variant="standard"
-                                // label="Include Components"
-                                placeholder="Include..."
-                            />
-                        )}
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel shrink variant="standard" forHtml={"exclude-components"}>Exclude Components</InputLabel>
-                    <Autocomplete
-                        multiple
-                        id="exclude-components"
-                        options={top100Films}
-                        getOptionLabel={(option) => option.title}
-                        filterSelectedOptions
-                        size={"small"}
-                        sx={{marginTop: theme.spacing(2)}}
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                variant="standard"
-                                // label="Exclude Components"
-                                placeholder="Exclude..."
-                            />
-                        )}
-                    />
-                </FormControl>
-                {/*<FormControlLabel label={"Construction"} />*/}
-                <FormControl>
-                    <InputLabel shrink variant="standard" forHtml={"construction-input"}>Construction</InputLabel>
-                    {/*<InputBase>*/}
-                    <ToggleButtonGroup
-                        id={"construction-input"}
-                        value={constructions}
-                        onChange={updateConstructions}
-                        aria-label="construction"
-                        sx={{marginTop: theme.spacing(2), justifyContent: 'center'}}
-                    >
-                        <ToggleButton value="stir" aria-label="stir">
-                            Stir
-                        </ToggleButton>
-                        <ToggleButton value="shake" aria-label="shake">
-                            Shake
-                        </ToggleButton>
-                        <ToggleButton value="build" aria-label="build">
-                            Build
-                        </ToggleButton>
-                        <ToggleButton value="swizzle" aria-label="swizzle">
-                            Swizzle
-                        </ToggleButton>
-                    </ToggleButtonGroup>
-                    {/*</InputBase>*/}
-                </FormControl>
+                <AutocompleteFormControl id={"include-components"} placeholder={"Include..."} label={"Include Components"} options={top100Films} />
+                <AutocompleteFormControl id={"exclude-components"} placeholder={"Exclude..."} label={"Exclude Components"} options={top100Films} />
+                <ToggleButtonGroupControl id={"construction"} label={"Construction"} buttons={constructions} />
             </Stack>
         </SearchPaneWrapper>
     )

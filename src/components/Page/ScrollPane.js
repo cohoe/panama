@@ -1,82 +1,81 @@
 import React from 'react';
 
 import {Route, Routes} from "react-router-dom";
-import {useTheme, Typography} from '@mui/material';
+import {Typography} from '@mui/material';
 import {CocktailList} from "../Cocktail/CocktailList";
 import {CocktailSearch} from "../Cocktail/CocktailSearch";
 import {ActionBar} from "./ActionBar/ActionBar";
 import {ActionBarButton} from "./ActionBar/ActionBarButton";
-import {makeStyles} from '@mui/styles';
+import {styled} from "@mui/material/styles";
 
 
-const useStyles = makeStyles((theme) => ({
-    scrollPane: {
-        [theme.breakpoints.up('md')]: {
-            width: '340px',
-        },
-        [theme.breakpoints.only('sm')]: {
-            flex: 1, // @TODO width 50%?
-        },
-        [theme.breakpoints.down('xs')]: {
-            width: '100%',
-        },
-        // overflowY: 'scroll',
-        display: 'flex',
-        flexDirection: 'column',
-        borderRight: '1px solid #000'
+const ScrollPaneInner = styled('div')(() => ({
+    overflowY: 'scroll',
+}));
+
+const ScrollPaneOuter = (theme) => ({
+    [theme.breakpoints.up('md')]: {
+        width: '340px',
     },
-    scrollPaneActive: {
-        // display: 'flex'
+    [theme.breakpoints.only('sm')]: {
+        flex: 1, // @TODO width 50%?
     },
-    scrollPaneInactive: {
-        [theme.breakpoints.down('xs')]: {
-            display: 'none'
-        },
+    [theme.breakpoints.down('xs')]: {
+        width: '100%',
     },
-    scrollPaneInner: {
-        overflowY: 'scroll',
-    }
-}))
+    // overflowY: 'scroll',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRight: '1px solid #000'
+});
+
+const ScrollPaneOuterActive = styled('div')(({theme}) => ({
+    ...ScrollPaneOuter(theme),
+    // pass
+}));
+const ScrollPaneOuterInactive = styled('div')(({theme}) => ({
+    ...ScrollPaneOuter(theme),
+    [theme.breakpoints.down('xs')]: {
+        display: 'none'
+    },
+}));
 
 export const ScrollPane = () => {
-    const theme = useTheme();
-    const classes = useStyles(theme);
-
     return (
         <Routes>
             <Route exact path="/search/cocktails/" element={
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
+                <ScrollPaneOuterActive>
                     <ActionBar>
                         <ActionBarButton text={"clear"}/>
                     </ActionBar>
-                    <div className={classes.scrollPaneInner}>
+                    <ScrollPaneInner>
                         <CocktailSearch/>
-                    </div>
-                </div>}/>
+                    </ScrollPaneInner>
+                </ScrollPaneOuterActive>}/>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug" element={
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneInactive}>
+                <ScrollPaneOuterInactive>
                     <ActionBar>
                         <ActionBarButton text={"history"}/>
                         <ActionBarButton text={"search"} path={"/search/cocktails"}/>
                     </ActionBar>
-                    <div className={classes.scrollPaneInner}>
+                    <ScrollPaneInner>
                         <CocktailList/>
-                    </div>
-                </div>}/>
+                    </ScrollPaneInner>
+                </ScrollPaneOuterInactive>}/>
             <Route exact path="/cocktails/" element={
-                <div className={classes.scrollPane + ' ' + classes.scrollPaneActive}>
+                <ScrollPaneOuterActive>
                     <ActionBar>
                         <ActionBarButton text={"history"}/>
                         <ActionBarButton text={"search"} path={"/search/cocktails"}/>
                     </ActionBar>
-                    <div className={classes.scrollPaneInner}>
+                    <ScrollPaneInner>
                         <CocktailList/>
-                    </div>
-                </div>}/>
+                    </ScrollPaneInner>
+                </ScrollPaneOuterActive>}/>
             <Route path="/" element={
-                <div className={classes.scrollPane}>
+                <ScrollPane>
                     <Typography>Hork Tork</Typography>
-                </div>}/>
+                </ScrollPane>}/>
         </Routes>
     )
 }

@@ -1,27 +1,13 @@
 import React from 'react';
 
-import {useTheme, Button} from '@mui/material';
+import {Button} from '@mui/material';
 import {Link} from "react-router-dom";
-import {makeStyles} from '@mui/styles';
 
 
-const useStyles = makeStyles((theme) => ({
-    actionBarIcon: {
-        // marginTop: 'auto',
-        // marginBottom: 'auto'
-    },
-    actionBarButton: {
-        height: '100%',
-    }
-}))
-
-export const ActionBarButton = ({text, path="#"}) => {
-    const theme = useTheme();
-    const classes = useStyles(theme);
-
+export const ActionBarButton = ({text, path = "#"}) => {
     return (
-      <Link to={path} key={text} >
-        <Button className={classes.actionBarButton}>{text}</Button>
-      </Link>
+        <Link to={path} key={text}>
+            <Button sx={{height: '100%'}}>{text}</Button>
+        </Link>
     )
 }

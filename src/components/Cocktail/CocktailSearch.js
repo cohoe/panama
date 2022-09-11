@@ -13,21 +13,32 @@ const SearchPaneWrapper = styled(Box)(({theme}) => ({
     label: 'SearchPaneWrapper',
     width: '100%',
     minHeight: '50px',
-    backgroundColor: theme.palette.background.default,
+    // backgroundColor: theme.palette.background.default,
+    backgroundColor: 'red',
     display: 'flex',
     padding: theme.spacing(1, 1),
 }))
 
-const AutocompleteFormControl = ({id, options = [], placeholder = "", label = "", onChange = null}) => {
+const AutocompleteFormControl = ({id, data = [], placeholder = "", label = "", onChange, queryParam}) => {
     const theme = useTheme();
+    const [values, setValues] = React.useState([])
+
+    const updateValues = (event, newValues) => {
+        console.log("Setting autocomplete to: ")
+        let valueSlugs = newValues.map((item, i) => (item.slug))
+        console.log(valueSlugs)
+        setValues(valueSlugs)
+        onChange(queryParam, valueSlugs)
+    }
+
     return (
         <FormControl>
             <InputLabel shrink variant="standard">{label}</InputLabel>
             <Autocomplete
                 multiple
                 id={id}
-                options={options}
-                getOptionLabel={(option) => option.display_name}
+                options={data}
+                getOptionLabel={(data) => data.display_name}
                 filterSelectedOptions
                 size={"small"}
                 sx={{marginTop: theme.spacing(2)}}
@@ -37,15 +48,15 @@ const AutocompleteFormControl = ({id, options = [], placeholder = "", label = ""
                         variant="standard"
                         // label="Include Components"
                         placeholder={placeholder}
-                        onChange={onChange}
                     />
                 )}
+                onChange={updateValues}
             />
         </FormControl>
     )
 }
 
-const ToggleButtonGroupControl = ({id, buttons = [], label = "", onChange, queryParam}) => {
+const ToggleButtonGroupControl = ({id, data = [], label = "", onChange, queryParam}) => {
     const theme = useTheme();
     const [options, setOptions] = React.useState([])
 
@@ -53,7 +64,7 @@ const ToggleButtonGroupControl = ({id, buttons = [], label = "", onChange, query
         console.log("Setting toggle buttons to: ")
         console.log(newOptions)
         setOptions(newOptions)
-        onChange(event)
+        onChange(queryParam, newOptions)
     }
     return (
         <FormControl>
@@ -66,7 +77,7 @@ const ToggleButtonGroupControl = ({id, buttons = [], label = "", onChange, query
                 aria-label={id}
                 sx={{marginTop: theme.spacing(2)}}
             >
-                {buttons.map((option, i) => (
+                {data.map((option, i) => (
                     <ToggleButton key={option.slug} value={option.slug} aria-label={option.slug}>
                         {option.display_name}
                     </ToggleButton>
@@ -101,17 +112,23 @@ export const CocktailSearch = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log("YOU JUST SUBMITTED A FORM! This is what we had:")
         console.log(formValues);
     }
     // https://onestepcode.com/creating-a-material-ui-form/
-    const handleInputChange = (e) => {
+    const handleInputChange = (queryParam, value) => {
         console.log("Calling handleInputChange")
-        console.log(e)
-        const {name, value} = e.target;
+        // console.log(e)
+        // const {name, value} = e.target;
+        // setFormValues({
+        //     ...formValues,
+        //     [name]: value,
+        // });
         setFormValues({
             ...formValues,
-            [name]: value,
-        });
+            // The [queryParam] thing makes it the actual key not literally "queryParam".
+            [queryParam]: value
+        })
         console.log("Form values are now:")
         console.log(formValues)
     };
@@ -124,13 +141,13 @@ export const CocktailSearch = () => {
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={2} sx={{width: 'inherit', overflow: 'hidden'}}>
                             <AutocompleteFormControl id={"include-components"} placeholder={"Include..."}
-                                                     label={"Include Components"} options={components}
-                                                     onChange={handleInputChange}/>
+                                                     label={"Include Components"} data={components}
+                                                     onChange={handleInputChange} queryParam={"components"}/>
                             <AutocompleteFormControl id={"exclude-components"} placeholder={"Exclude..."}
-                                                     label={"Exclude Components"} options={components}
-                                                     onChange={handleInputChange}/>
+                                                     label={"Exclude Components"} data={components}
+                                                     onChange={handleInputChange} queryParam={"no_components"}/>
                             <ToggleButtonGroupControl id={"construction"} label={"Construction"}
-                                                      buttons={constructions}
+                                                      data={constructions}
                                                       onChange={handleInputChange} queryParam={"construction"}/>
                             <Button variant="contained" color="primary" type="submit">
                                 Submit

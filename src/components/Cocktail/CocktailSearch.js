@@ -8,13 +8,15 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
+
 
 const SearchPaneWrapper = styled(Box)(({theme}) => ({
     label: 'SearchPaneWrapper',
     width: '100%',
     minHeight: '50px',
-    // backgroundColor: theme.palette.background.default,
-    backgroundColor: 'red',
+    backgroundColor: theme.palette.background.default,
+    // backgroundColor: 'red',
     display: 'flex',
     padding: theme.spacing(1, 1),
 }))
@@ -76,6 +78,7 @@ const ToggleButtonGroupControl = ({id, data = [], label = "", onChange, queryPar
                 onChange={updateOptions}
                 aria-label={id}
                 sx={{marginTop: theme.spacing(2)}}
+                exclusive={true}
             >
                 {data.map((option, i) => (
                     <ToggleButton key={option.slug} value={option.slug} aria-label={option.slug}>
@@ -87,12 +90,18 @@ const ToggleButtonGroupControl = ({id, data = [], label = "", onChange, queryPar
     )
 }
 
+const StyledForm = styled('form')(({theme}) => ({
+    width: 'inherit'
+}))
+
 export const CocktailSearch = () => {
     const theme = useTheme();
     const [components, setComponents] = React.useState([])
     const [constructions, setConstructions] = React.useState([])
     const [loading, setLoading] = React.useState(true)
     const [formValues, setFormValues] = React.useState({});
+    let navigate = useNavigate();
+
 
     const fetchSearchData = async () => {
         let response = await fetch(`http://localhost:8080/api/v1/ingredients`)
@@ -114,6 +123,12 @@ export const CocktailSearch = () => {
         event.preventDefault();
         console.log("YOU JUST SUBMITTED A FORM! This is what we had:")
         console.log(formValues);
+        // @TODO I should probably make Barbados urlencode these.
+        // Especially after the Traefik+Artifactory bullshit we encountered at work.
+        // https://attacomsian.com/blog/javascript-convert-object-to-query-string-parameters
+        const urlParams = new URLSearchParams(formValues).toString().replaceAll("%2C", ",")
+        console.log(urlParams)
+        navigate(`?${urlParams}`, { replace: true });
     }
     // https://onestepcode.com/creating-a-material-ui-form/
     const handleInputChange = (queryParam, value) => {
@@ -133,12 +148,15 @@ export const CocktailSearch = () => {
         console.log(formValues)
     };
 
+    // @TODO construction search via the API currently only supports single value.
+    // Until I crack open Barbados and make that tolerate multiple the ToggleButtonGroup
+    // will just have to be explicit.
     return (
         <>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <SearchPaneWrapper theme={theme}>
-                    <form onSubmit={handleSubmit}>
+                    <StyledForm onSubmit={handleSubmit}>
                         <Stack spacing={2} sx={{width: 'inherit', overflow: 'hidden'}}>
                             <AutocompleteFormControl id={"include-components"} placeholder={"Include..."}
                                                      label={"Include Components"} data={components}
@@ -153,7 +171,7 @@ export const CocktailSearch = () => {
                                 Submit
                             </Button>
                         </Stack>
-                    </form>
+                    </StyledForm>
                 </SearchPaneWrapper>
             )}
         </>

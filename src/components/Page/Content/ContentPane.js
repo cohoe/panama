@@ -4,6 +4,10 @@ import {useTheme, Typography} from '@mui/material';
 import {CocktailPane} from "../../Cocktail";
 import {Route, Routes, useParams} from "react-router-dom";
 import {styled} from "@mui/material/styles";
+import {ActionBar} from "../ActionBar/ActionBar";
+import {ActionBarButton} from "../ActionBar/ActionBarButton";
+import {CocktailSearch} from "../../Cocktail/CocktailSearch";
+import {CocktailSearchResultListPane} from "../../Cocktail/CocktailSearchResultListPane";
 
 
 const ContentPaneBox = styled('div')(({theme}) => ({
@@ -33,6 +37,10 @@ export const ContentPane = () => {
 
     return (
         <Routes>
+            <Route exact path="/search/cocktails/" element={
+                <ContentPaneBox sx={{...activeMixin(theme)}}>
+                    <CocktailSearchResultListPane/>
+                </ContentPaneBox>}/>
             <Route exact path="/cocktails/:cocktail_slug/:spec_slug" element={
                 <ContentPaneBox sx={{...activeMixin(theme)}}>
                     <CocktailPane/>
